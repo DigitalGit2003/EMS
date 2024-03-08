@@ -1,0 +1,14 @@
+C:\Users\lathi\OneDrive\Documents\sem-6\WSD\EMS\EMS\EMS\bin\Debug\EMS.dll.config
+C:\Users\lathi\OneDrive\Documents\sem-6\WSD\EMS\EMS\EMS\bin\Debug\EMS.dll
+C:\Users\lathi\OneDrive\Documents\sem-6\WSD\EMS\EMS\EMS\bin\Debug\EMS.pdb
+C:\Users\lathi\OneDrive\Documents\sem-6\WSD\EMS\EMS\EMS\bin\Debug\EntityFramework.dll
+C:\Users\lathi\OneDrive\Documents\sem-6\WSD\EMS\EMS\EMS\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\lathi\OneDrive\Documents\sem-6\WSD\EMS\EMS\EMS\bin\Debug\EntityFramework.xml
+C:\Users\lathi\OneDrive\Documents\sem-6\WSD\EMS\EMS\EMS\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\lathi\OneDrive\Documents\sem-6\WSD\EMS\EMS\EMS\obj\Debug\EMS.csproj.AssemblyReference.cache
+C:\Users\lathi\OneDrive\Documents\sem-6\WSD\EMS\EMS\EMS\obj\Debug\EMS.csproj.CoreCompileInputs.cache
+C:\Users\lathi\OneDrive\Documents\sem-6\WSD\EMS\EMS\EMS\obj\Debug\EMS.csproj.CopyComplete
+C:\Users\lathi\OneDrive\Documents\sem-6\WSD\EMS\EMS\EMS\obj\Debug\EMS.dll
+C:\Users\lathi\OneDrive\Documents\sem-6\WSD\EMS\EMS\EMS\obj\Debug\EMS.pdb
+C:\Users\lathi\OneDrive\Documents\sem-6\WSD\EMS\EMS\EMS\obj\Debug\EMS.Migrations.EMS.resources
+C:\Users\lathi\OneDrive\Documents\sem-6\WSD\EMS\EMS\EMS\obj\Debug\EMS.csproj.GenerateResource.cache

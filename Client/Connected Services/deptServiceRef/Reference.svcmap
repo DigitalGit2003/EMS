@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="0e937167-d803-479b-bd02-6af463f43e49" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="net.tcp://localhost:8000/deptService/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="b4fd60d4-329a-446d-a9f2-84d8a320746a" SourceId="1" SourceUrl="net.tcp://localhost:8000/deptService/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="66d36e8f-8d98-460a-8860-d5c3254d2a19" SourceId="1" SourceUrl="net.tcp://localhost:8000/deptService/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="cfc80fae-102b-49d7-b6b6-832fbaf2a43a" SourceId="1" SourceUrl="net.tcp://localhost:8000/deptService/mex" />
+    <MetadataFile FileName="EMS.xsd" MetadataType="Schema" ID="ab46b8e7-60ec-4cf6-b548-9218794e54ee" SourceId="1" SourceUrl="net.tcp://localhost:8000/deptService/mex" />
+    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="92dd8b82-82f3-464c-961e-54778c50057d" SourceId="1" SourceUrl="net.tcp://localhost:8000/deptService/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
