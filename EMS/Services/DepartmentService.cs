@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EMS.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,42 +9,70 @@ namespace EMS.Services
 {
     public class DepartmentService : IDepartmentService
     {
+        private static DepartmentDTO convertToDTO(Department d)
+        {
+            return new DepartmentDTO
+            {
+                DepartmentId = d.DepartmentId,
+                Name = d.Name,
+                Location = d.Location
+            };
+        }
 
+        private static Department convertFromDTO(DepartmentDTO dto)
+        {
+            return new Department
+            {
+                DepartmentId = dto.DepartmentId,
+                Name = dto.Name,
+                Location = dto.Location
+            };
+        }
         // ----------------------------------------------------------------------
 
-        //public Department getDepartment(int dept_id)
-        //{
-        //    using (var context = new EMSDbContext())
-        //    {
-        //        Department dept = context.Departments.Find(dept_id);
-        //        return dept;
-        //    }
-        //}
-
-        //public ICollection<Department> getDepartments()
-        //{
-        //    using (var context = new EMSDbContext())
-        //    {
-        //        return context.Departments.ToList();
-        //    }
-        //}
-
-        // ----------------------------------------------------------------------
-        public string addDepartment(Department d)
+        public DepartmentDTO getDepartment(string dept_name)
         {
             using (var context = new EMSDbContext())
             {
+                Department dept = context.Departments.FirstOrDefault(d => d.Name == dept_name);
+                DepartmentDTO result = convertToDTO(dept);
+                return result;
+            }
+        }
+
+        public List<DepartmentDTO> getDepartments()
+        {
+            using (var context = new EMSDbContext())
+            {
+                List<Department> depts = context.Departments.ToList();
+                List<DepartmentDTO> deptDTOs = new List<DepartmentDTO>();
+                foreach (var dept in depts)
+                {
+                    DepartmentDTO deptDTO = convertToDTO(dept);
+                    deptDTOs.Add(deptDTO);
+                }
+
+                return deptDTOs;
+            }
+        }
+
+        // ----------------------------------------------------------------------
+        public string addDepartment(DepartmentDTO dto)
+        {
+            using (var context = new EMSDbContext())
+            {
+                Department d = convertFromDTO(dto);
                 context.Departments.Add(d);
                 context.SaveChanges();
             }
-            return $"Department {d.Name} is added.";
+            return $"Department {dto.Name} is added.";
         }
 
-        public string updateDepartment(int dept_id, Department d)
+        public string updateDepartment(string dept_name, Department d)
         {
             using (var context = new EMSDbContext())
             {
-                Department dept = context.Departments.Find(dept_id);
+                Department dept = context.Departments.FirstOrDefault(de => de.Name == dept_name);
                 dept.Name = d.Name;
                 dept.Location = d.Location;
                 context.SaveChanges();
@@ -76,24 +105,6 @@ namespace EMS.Services
             }
             return "Department deleted.";
         }
-
-
-        public List<string> getDepartmentNames()
-        {
-            using (var context = new EMSDbContext())
-            {
-                return context.Departments.Select(d => d.Name).ToList();
-            }
-        }
-
-        public List<string> getDepartmentLocations()
-        {
-            using(var context = new EMSDbContext())
-            {
-                return context.Departments.Select(d => d.Location).ToList();
-            }
-        }
-
 
     }
 }

@@ -37,9 +37,22 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import namespace="http://tempuri.org/" />
       <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/EMS.Models" />
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/EMS" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="IProjectService_getProject_InputMessage">
+    <wsdl:part name="parameters" element="tns:getProject" />
+  </wsdl:message>
+  <wsdl:message name="IProjectService_getProject_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getProjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProjectService_getProjects_InputMessage">
+    <wsdl:part name="parameters" element="tns:getProjects" />
+  </wsdl:message>
+  <wsdl:message name="IProjectService_getProjects_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getProjectsResponse" />
+  </wsdl:message>
   <wsdl:message name="IProjectService_addProject_InputMessage">
     <wsdl:part name="parameters" element="tns:addProject" />
   </wsdl:message>
@@ -59,6 +72,14 @@
     <wsdl:part name="parameters" element="tns:deleteProjectResponse" />
   </wsdl:message>
   <wsdl:portType name="IProjectService">
+    <wsdl:operation name="getProject">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProjectService/getProject" message="tns:IProjectService_getProject_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProjectService/getProjectResponse" message="tns:IProjectService_getProject_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getProjects">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProjectService/getProjects" message="tns:IProjectService_getProjects_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProjectService/getProjectsResponse" message="tns:IProjectService_getProjects_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="addProject">
       <wsdl:input wsaw:Action="http://tempuri.org/IProjectService/addProject" message="tns:IProjectService_addProject_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProjectService/addProjectResponse" message="tns:IProjectService_addProject_OutputMessage" />
@@ -76,6 +97,24 @@
     <wsp:PolicyReference URI="#NetTcpBinding_IProjectService_policy">
     </wsp:PolicyReference>
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="getProject">
+      <soap12:operation soapAction="http://tempuri.org/IProjectService/getProject" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProjects">
+      <soap12:operation soapAction="http://tempuri.org/IProjectService/getProjects" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="addProject">
       <soap12:operation soapAction="http://tempuri.org/IProjectService/addProject" style="document" />
       <wsdl:input>

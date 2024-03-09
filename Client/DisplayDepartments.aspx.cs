@@ -22,20 +22,19 @@ namespace Client
         private void PopulateGridView()
         {
             deptServiceRef.DepartmentServiceClient dc = new deptServiceRef.DepartmentServiceClient("NetTcpBinding_IDepartmentService");
-            List<string> deptNames = dc.getDepartmentNames().ToList();
-            List<string> deptLocations = dc.getDepartmentLocations().ToList();
-
+            List<DepartmentDTO> depts = dc.getDepartments().ToList();
+            
             // Create a DataTable
             DataTable dtDepartments = new DataTable();
             dtDepartments.Columns.Add("Name");
             dtDepartments.Columns.Add("Location");
 
             // Add rows to the DataTable
-            for (int i = 0; i < deptNames.Count; i++)
+            foreach (var dept in depts)
             {
                 DataRow dr = dtDepartments.NewRow();
-                dr["Name"] = deptNames[i];
-                dr["Location"] = deptLocations[i];
+                dr["Name"] = dept.Name;
+                dr["Location"] = dept.Location;
                 dtDepartments.Rows.Add(dr);
             }
 
@@ -61,6 +60,20 @@ namespace Client
 
             PopulateGridView();
             Label1.Text = s;
+        }
+
+        protected void btnUpdate_Click(object sender, EventArgs e)
+        {
+            Button btnDelete = (Button)sender;
+            GridViewRow row = (GridViewRow)btnDelete.NamingContainer;
+
+            string commandArgument = btnDelete.CommandArgument;
+            string[] args = commandArgument.Split(',');
+
+            string dept_name = args[0];
+            int rowIndex = Convert.ToInt32(args[1]);
+
+            Response.Redirect("UpdateDepartment.aspx?deptName=" + Server.UrlEncode(dept_name));
         }
     }
 }

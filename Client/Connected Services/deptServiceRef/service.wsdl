@@ -37,10 +37,22 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import namespace="http://tempuri.org/" />
       <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/EMS.Models" />
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/EMS" />
-      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="IDepartmentService_getDepartment_InputMessage">
+    <wsdl:part name="parameters" element="tns:getDepartment" />
+  </wsdl:message>
+  <wsdl:message name="IDepartmentService_getDepartment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getDepartmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDepartmentService_getDepartments_InputMessage">
+    <wsdl:part name="parameters" element="tns:getDepartments" />
+  </wsdl:message>
+  <wsdl:message name="IDepartmentService_getDepartments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getDepartmentsResponse" />
+  </wsdl:message>
   <wsdl:message name="IDepartmentService_addDepartment_InputMessage">
     <wsdl:part name="parameters" element="tns:addDepartment" />
   </wsdl:message>
@@ -59,19 +71,15 @@
   <wsdl:message name="IDepartmentService_deleteDepartment_OutputMessage">
     <wsdl:part name="parameters" element="tns:deleteDepartmentResponse" />
   </wsdl:message>
-  <wsdl:message name="IDepartmentService_getDepartmentNames_InputMessage">
-    <wsdl:part name="parameters" element="tns:getDepartmentNames" />
-  </wsdl:message>
-  <wsdl:message name="IDepartmentService_getDepartmentNames_OutputMessage">
-    <wsdl:part name="parameters" element="tns:getDepartmentNamesResponse" />
-  </wsdl:message>
-  <wsdl:message name="IDepartmentService_getDepartmentLocations_InputMessage">
-    <wsdl:part name="parameters" element="tns:getDepartmentLocations" />
-  </wsdl:message>
-  <wsdl:message name="IDepartmentService_getDepartmentLocations_OutputMessage">
-    <wsdl:part name="parameters" element="tns:getDepartmentLocationsResponse" />
-  </wsdl:message>
   <wsdl:portType name="IDepartmentService">
+    <wsdl:operation name="getDepartment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDepartmentService/getDepartment" message="tns:IDepartmentService_getDepartment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDepartmentService/getDepartmentResponse" message="tns:IDepartmentService_getDepartment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getDepartments">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDepartmentService/getDepartments" message="tns:IDepartmentService_getDepartments_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDepartmentService/getDepartmentsResponse" message="tns:IDepartmentService_getDepartments_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="addDepartment">
       <wsdl:input wsaw:Action="http://tempuri.org/IDepartmentService/addDepartment" message="tns:IDepartmentService_addDepartment_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDepartmentService/addDepartmentResponse" message="tns:IDepartmentService_addDepartment_OutputMessage" />
@@ -84,19 +92,29 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IDepartmentService/deleteDepartment" message="tns:IDepartmentService_deleteDepartment_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDepartmentService/deleteDepartmentResponse" message="tns:IDepartmentService_deleteDepartment_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="getDepartmentNames">
-      <wsdl:input wsaw:Action="http://tempuri.org/IDepartmentService/getDepartmentNames" message="tns:IDepartmentService_getDepartmentNames_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IDepartmentService/getDepartmentNamesResponse" message="tns:IDepartmentService_getDepartmentNames_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="getDepartmentLocations">
-      <wsdl:input wsaw:Action="http://tempuri.org/IDepartmentService/getDepartmentLocations" message="tns:IDepartmentService_getDepartmentLocations_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IDepartmentService/getDepartmentLocationsResponse" message="tns:IDepartmentService_getDepartmentLocations_OutputMessage" />
-    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IDepartmentService" type="tns:IDepartmentService">
     <wsp:PolicyReference URI="#NetTcpBinding_IDepartmentService_policy">
     </wsp:PolicyReference>
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="getDepartment">
+      <soap12:operation soapAction="http://tempuri.org/IDepartmentService/getDepartment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDepartments">
+      <soap12:operation soapAction="http://tempuri.org/IDepartmentService/getDepartments" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="addDepartment">
       <soap12:operation soapAction="http://tempuri.org/IDepartmentService/addDepartment" style="document" />
       <wsdl:input>
@@ -117,24 +135,6 @@
     </wsdl:operation>
     <wsdl:operation name="deleteDepartment">
       <soap12:operation soapAction="http://tempuri.org/IDepartmentService/deleteDepartment" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getDepartmentNames">
-      <soap12:operation soapAction="http://tempuri.org/IDepartmentService/getDepartmentNames" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getDepartmentLocations">
-      <soap12:operation soapAction="http://tempuri.org/IDepartmentService/getDepartmentLocations" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
