@@ -15,7 +15,7 @@ namespace Client
         {
             if (!IsPostBack)
             {
-                deptServiceRef.DepartmentServiceClient dc = new deptServiceRef.DepartmentServiceClient("NetTcpBinding_IDepartmentService");
+                DepartmentServiceClient dc = new DepartmentServiceClient();
                 List<DepartmentDTO> depts = dc.getDepartments().ToList();
 
                 List<string> deptNames = new List<string>();
@@ -39,7 +39,7 @@ namespace Client
             projDTO.Title = title;
             projDTO.Status = status;
 
-            projServiceRef.ProjectServiceClient pc = new projServiceRef.ProjectServiceClient("NetTcpBinding_IProjectService");
+            ProjectServiceClient pc = new ProjectServiceClient();
             string s = pc.addProject(projDTO, deptName);
 
             Label1.Text = s;

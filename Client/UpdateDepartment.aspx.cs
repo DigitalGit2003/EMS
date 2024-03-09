@@ -17,9 +17,33 @@ namespace Client
                 if (Request.QueryString["deptName"] != null)
                 {
                     string departmentName = Request.QueryString["deptName"];
-                    Label1.Text = departmentName;
+                    
+                    DepartmentServiceClient dc = new DepartmentServiceClient();
+                    DepartmentDTO dept = dc.getDepartment(departmentName);
+
+
+                    // Populate the textboxes with existing department details
+                    tbName.Text = dept.Name;
+                    tbLocation.Text = dept.Location;
                 }
             }
+        }
+
+        protected void btnUpdateDept_Click(object sender, EventArgs e)
+        {
+            string departmentName = Request.QueryString["deptName"];
+
+            string name = tbName.Text;
+            string location = tbLocation.Text;
+
+            DepartmentDTO departmentDTO = new DepartmentDTO();
+            departmentDTO.Name = name;
+            departmentDTO.Location = location;
+
+            DepartmentServiceClient dc = new DepartmentServiceClient();
+            string s = dc.updateDepartment(departmentName, departmentDTO);
+
+            Label1.Text = s;
         }
     }
 }

@@ -173,9 +173,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\deptServiceRef\EMS.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Connected Services\deptServiceRef\service.wsdl" />
     <None Include="Connected Services\deptServiceRef\service.xsd">
       <SubType>Designer</SubType>

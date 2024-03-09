@@ -21,7 +21,7 @@ namespace Client
 
         private void PopulateGridView()
         {
-            deptServiceRef.DepartmentServiceClient dc = new deptServiceRef.DepartmentServiceClient("NetTcpBinding_IDepartmentService");
+            DepartmentServiceClient dc = new DepartmentServiceClient();
             List<DepartmentDTO> depts = dc.getDepartments().ToList();
             
             // Create a DataTable
