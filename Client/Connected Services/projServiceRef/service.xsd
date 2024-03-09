@@ -16,25 +16,11 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="getProject">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="p_id" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="getProjectResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/EMS" minOccurs="0" name="getProjectResult" nillable="true" type="q2:Project" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="updateProject">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="p_id" type="xs:int" />
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/EMS" minOccurs="0" name="p" nillable="true" type="q3:Project" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/EMS" minOccurs="0" name="p" nillable="true" type="q2:Project" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -56,18 +42,6 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="deleteProjectResult" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="getProjects">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="getProjectsResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/EMS" minOccurs="0" name="getProjectsResult" nillable="true" type="q4:ArrayOfProject" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -17,5 +17,23 @@ namespace EMS
         {
 
         }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+
+            // Configure cascading delete for Department-Employee relationship
+            modelBuilder.Entity<Department>()
+                .HasMany(d => d.Employees)
+                .WithRequired(e => e.Department)
+                .HasForeignKey(e => e.DepartmentId)
+                .WillCascadeOnDelete(true);
+
+            // Configure cascading delete for Department-Project relationship
+            modelBuilder.Entity<Department>()
+                .HasMany(d => d.Projects)
+                .WithRequired(p => p.Department)
+                .HasForeignKey(p => p.DepartmentId)
+                .WillCascadeOnDelete(false) ;
+        }
     }
 }

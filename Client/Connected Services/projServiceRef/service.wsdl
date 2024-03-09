@@ -46,12 +46,6 @@
   <wsdl:message name="IProjectService_addProject_OutputMessage">
     <wsdl:part name="parameters" element="tns:addProjectResponse" />
   </wsdl:message>
-  <wsdl:message name="IProjectService_getProject_InputMessage">
-    <wsdl:part name="parameters" element="tns:getProject" />
-  </wsdl:message>
-  <wsdl:message name="IProjectService_getProject_OutputMessage">
-    <wsdl:part name="parameters" element="tns:getProjectResponse" />
-  </wsdl:message>
   <wsdl:message name="IProjectService_updateProject_InputMessage">
     <wsdl:part name="parameters" element="tns:updateProject" />
   </wsdl:message>
@@ -64,20 +58,10 @@
   <wsdl:message name="IProjectService_deleteProject_OutputMessage">
     <wsdl:part name="parameters" element="tns:deleteProjectResponse" />
   </wsdl:message>
-  <wsdl:message name="IProjectService_getProjects_InputMessage">
-    <wsdl:part name="parameters" element="tns:getProjects" />
-  </wsdl:message>
-  <wsdl:message name="IProjectService_getProjects_OutputMessage">
-    <wsdl:part name="parameters" element="tns:getProjectsResponse" />
-  </wsdl:message>
   <wsdl:portType name="IProjectService">
     <wsdl:operation name="addProject">
       <wsdl:input wsaw:Action="http://tempuri.org/IProjectService/addProject" message="tns:IProjectService_addProject_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProjectService/addProjectResponse" message="tns:IProjectService_addProject_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="getProject">
-      <wsdl:input wsaw:Action="http://tempuri.org/IProjectService/getProject" message="tns:IProjectService_getProject_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IProjectService/getProjectResponse" message="tns:IProjectService_getProject_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="updateProject">
       <wsdl:input wsaw:Action="http://tempuri.org/IProjectService/updateProject" message="tns:IProjectService_updateProject_InputMessage" />
@@ -87,10 +71,6 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IProjectService/deleteProject" message="tns:IProjectService_deleteProject_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProjectService/deleteProjectResponse" message="tns:IProjectService_deleteProject_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="getProjects">
-      <wsdl:input wsaw:Action="http://tempuri.org/IProjectService/getProjects" message="tns:IProjectService_getProjects_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IProjectService/getProjectsResponse" message="tns:IProjectService_getProjects_OutputMessage" />
-    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IProjectService" type="tns:IProjectService">
     <wsp:PolicyReference URI="#NetTcpBinding_IProjectService_policy">
@@ -98,15 +78,6 @@
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
     <wsdl:operation name="addProject">
       <soap12:operation soapAction="http://tempuri.org/IProjectService/addProject" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getProject">
-      <soap12:operation soapAction="http://tempuri.org/IProjectService/getProject" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -125,15 +96,6 @@
     </wsdl:operation>
     <wsdl:operation name="deleteProject">
       <soap12:operation soapAction="http://tempuri.org/IProjectService/deleteProject" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getProjects">
-      <soap12:operation soapAction="http://tempuri.org/IProjectService/getProjects" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

@@ -22,9 +22,10 @@ namespace EMS
         [DataMember]
         public int Salary { get; set; }
 
+        public int DepartmentId { get; set; }
         public virtual Department Department { get; set; }
 
-        public virtual ICollection<Project> projects{ get; set; }
+        public virtual ICollection<Project> Projects{ get; set; }
 
         public Employee() { }
 

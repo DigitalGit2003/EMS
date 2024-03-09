@@ -46,12 +46,6 @@
   <wsdl:message name="IEmployeeService_addEmployee_OutputMessage">
     <wsdl:part name="parameters" element="tns:addEmployeeResponse" />
   </wsdl:message>
-  <wsdl:message name="IEmployeeService_getEmployee_InputMessage">
-    <wsdl:part name="parameters" element="tns:getEmployee" />
-  </wsdl:message>
-  <wsdl:message name="IEmployeeService_getEmployee_OutputMessage">
-    <wsdl:part name="parameters" element="tns:getEmployeeResponse" />
-  </wsdl:message>
   <wsdl:message name="IEmployeeService_updateEmployee_InputMessage">
     <wsdl:part name="parameters" element="tns:updateEmployee" />
   </wsdl:message>
@@ -64,20 +58,10 @@
   <wsdl:message name="IEmployeeService_deleteEmployee_OutputMessage">
     <wsdl:part name="parameters" element="tns:deleteEmployeeResponse" />
   </wsdl:message>
-  <wsdl:message name="IEmployeeService_getEmployees_InputMessage">
-    <wsdl:part name="parameters" element="tns:getEmployees" />
-  </wsdl:message>
-  <wsdl:message name="IEmployeeService_getEmployees_OutputMessage">
-    <wsdl:part name="parameters" element="tns:getEmployeesResponse" />
-  </wsdl:message>
   <wsdl:portType name="IEmployeeService">
     <wsdl:operation name="addEmployee">
       <wsdl:input wsaw:Action="http://tempuri.org/IEmployeeService/addEmployee" message="tns:IEmployeeService_addEmployee_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IEmployeeService/addEmployeeResponse" message="tns:IEmployeeService_addEmployee_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="getEmployee">
-      <wsdl:input wsaw:Action="http://tempuri.org/IEmployeeService/getEmployee" message="tns:IEmployeeService_getEmployee_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IEmployeeService/getEmployeeResponse" message="tns:IEmployeeService_getEmployee_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="updateEmployee">
       <wsdl:input wsaw:Action="http://tempuri.org/IEmployeeService/updateEmployee" message="tns:IEmployeeService_updateEmployee_InputMessage" />
@@ -87,10 +71,6 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IEmployeeService/deleteEmployee" message="tns:IEmployeeService_deleteEmployee_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IEmployeeService/deleteEmployeeResponse" message="tns:IEmployeeService_deleteEmployee_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="getEmployees">
-      <wsdl:input wsaw:Action="http://tempuri.org/IEmployeeService/getEmployees" message="tns:IEmployeeService_getEmployees_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IEmployeeService/getEmployeesResponse" message="tns:IEmployeeService_getEmployees_OutputMessage" />
-    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IEmployeeService" type="tns:IEmployeeService">
     <wsp:PolicyReference URI="#NetTcpBinding_IEmployeeService_policy">
@@ -98,15 +78,6 @@
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
     <wsdl:operation name="addEmployee">
       <soap12:operation soapAction="http://tempuri.org/IEmployeeService/addEmployee" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getEmployee">
-      <soap12:operation soapAction="http://tempuri.org/IEmployeeService/getEmployee" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -125,15 +96,6 @@
     </wsdl:operation>
     <wsdl:operation name="deleteEmployee">
       <soap12:operation soapAction="http://tempuri.org/IEmployeeService/deleteEmployee" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getEmployees">
-      <soap12:operation soapAction="http://tempuri.org/IEmployeeService/getEmployees" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

@@ -100,12 +100,6 @@ namespace Client.empServiceRef {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmployeeService/addEmployee", ReplyAction="http://tempuri.org/IEmployeeService/addEmployeeResponse")]
         System.Threading.Tasks.Task<string> addEmployeeAsync(Client.empServiceRef.Employee e, string deptName);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmployeeService/getEmployee", ReplyAction="http://tempuri.org/IEmployeeService/getEmployeeResponse")]
-        Client.empServiceRef.Employee getEmployee(int emp_id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmployeeService/getEmployee", ReplyAction="http://tempuri.org/IEmployeeService/getEmployeeResponse")]
-        System.Threading.Tasks.Task<Client.empServiceRef.Employee> getEmployeeAsync(int emp_id);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmployeeService/updateEmployee", ReplyAction="http://tempuri.org/IEmployeeService/updateEmployeeResponse")]
         string updateEmployee(int emp_id, Client.empServiceRef.Employee e);
         
@@ -117,12 +111,6 @@ namespace Client.empServiceRef {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmployeeService/deleteEmployee", ReplyAction="http://tempuri.org/IEmployeeService/deleteEmployeeResponse")]
         System.Threading.Tasks.Task<string> deleteEmployeeAsync(int emp_id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmployeeService/getEmployees", ReplyAction="http://tempuri.org/IEmployeeService/getEmployeesResponse")]
-        Client.empServiceRef.Employee[] getEmployees();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmployeeService/getEmployees", ReplyAction="http://tempuri.org/IEmployeeService/getEmployeesResponse")]
-        System.Threading.Tasks.Task<Client.empServiceRef.Employee[]> getEmployeesAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -160,14 +148,6 @@ namespace Client.empServiceRef {
             return base.Channel.addEmployeeAsync(e, deptName);
         }
         
-        public Client.empServiceRef.Employee getEmployee(int emp_id) {
-            return base.Channel.getEmployee(emp_id);
-        }
-        
-        public System.Threading.Tasks.Task<Client.empServiceRef.Employee> getEmployeeAsync(int emp_id) {
-            return base.Channel.getEmployeeAsync(emp_id);
-        }
-        
         public string updateEmployee(int emp_id, Client.empServiceRef.Employee e) {
             return base.Channel.updateEmployee(emp_id, e);
         }
@@ -182,14 +162,6 @@ namespace Client.empServiceRef {
         
         public System.Threading.Tasks.Task<string> deleteEmployeeAsync(int emp_id) {
             return base.Channel.deleteEmployeeAsync(emp_id);
-        }
-        
-        public Client.empServiceRef.Employee[] getEmployees() {
-            return base.Channel.getEmployees();
-        }
-        
-        public System.Threading.Tasks.Task<Client.empServiceRef.Employee[]> getEmployeesAsync() {
-            return base.Channel.getEmployeesAsync();
         }
     }
 }
