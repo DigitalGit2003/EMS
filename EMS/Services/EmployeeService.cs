@@ -57,6 +57,24 @@ namespace EMS.Services
                 return empDTOs;
             }
         }
+
+        public List<EmployeeDTO> getEmployeesByDepartmentName(string dept_name)
+        {
+            using (var context = new EMSDbContext())
+            {
+                Department dept = context.Departments.FirstOrDefault(d => d.Name == dept_name);
+
+                List<Employee> emps = context.Employees.Where(e => e.DepartmentId == dept.DepartmentId).ToList();
+                List<EmployeeDTO> empDTOs = new List<EmployeeDTO>();
+                foreach (var emp in emps)
+                {
+                    EmployeeDTO empDTO = convertToDTO(emp);
+                    empDTOs.Add(empDTO);
+                }
+
+                return empDTOs;
+            }
+        }
         
         // ----------------------------------------------------------------------
         public string addEmployee(EmployeeDTO dto, string deptName)

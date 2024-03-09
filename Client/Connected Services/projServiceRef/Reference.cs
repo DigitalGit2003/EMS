@@ -183,6 +183,12 @@ namespace Client.projServiceRef {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectService/getProjects", ReplyAction="http://tempuri.org/IProjectService/getProjectsResponse")]
         System.Threading.Tasks.Task<Client.projServiceRef.ProjectDTO[]> getProjectsAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectService/getProjectsByDepartmentName", ReplyAction="http://tempuri.org/IProjectService/getProjectsByDepartmentNameResponse")]
+        Client.projServiceRef.ProjectDTO[] getProjectsByDepartmentName(string dept_name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectService/getProjectsByDepartmentName", ReplyAction="http://tempuri.org/IProjectService/getProjectsByDepartmentNameResponse")]
+        System.Threading.Tasks.Task<Client.projServiceRef.ProjectDTO[]> getProjectsByDepartmentNameAsync(string dept_name);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectService/addProject", ReplyAction="http://tempuri.org/IProjectService/addProjectResponse")]
         string addProject(Client.projServiceRef.ProjectDTO dto, string deptName);
         
@@ -243,6 +249,14 @@ namespace Client.projServiceRef {
         
         public System.Threading.Tasks.Task<Client.projServiceRef.ProjectDTO[]> getProjectsAsync() {
             return base.Channel.getProjectsAsync();
+        }
+        
+        public Client.projServiceRef.ProjectDTO[] getProjectsByDepartmentName(string dept_name) {
+            return base.Channel.getProjectsByDepartmentName(dept_name);
+        }
+        
+        public System.Threading.Tasks.Task<Client.projServiceRef.ProjectDTO[]> getProjectsByDepartmentNameAsync(string dept_name) {
+            return base.Channel.getProjectsByDepartmentNameAsync(dept_name);
         }
         
         public string addProject(Client.projServiceRef.ProjectDTO dto, string deptName) {

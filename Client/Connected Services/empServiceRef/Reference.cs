@@ -183,6 +183,12 @@ namespace Client.empServiceRef {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmployeeService/getEmployees", ReplyAction="http://tempuri.org/IEmployeeService/getEmployeesResponse")]
         System.Threading.Tasks.Task<Client.empServiceRef.EmployeeDTO[]> getEmployeesAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmployeeService/getEmployeesByDepartmentName", ReplyAction="http://tempuri.org/IEmployeeService/getEmployeesByDepartmentNameResponse")]
+        Client.empServiceRef.EmployeeDTO[] getEmployeesByDepartmentName(string dept_name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmployeeService/getEmployeesByDepartmentName", ReplyAction="http://tempuri.org/IEmployeeService/getEmployeesByDepartmentNameResponse")]
+        System.Threading.Tasks.Task<Client.empServiceRef.EmployeeDTO[]> getEmployeesByDepartmentNameAsync(string dept_name);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmployeeService/addEmployee", ReplyAction="http://tempuri.org/IEmployeeService/addEmployeeResponse")]
         string addEmployee(Client.empServiceRef.EmployeeDTO dto, string deptName);
         
@@ -243,6 +249,14 @@ namespace Client.empServiceRef {
         
         public System.Threading.Tasks.Task<Client.empServiceRef.EmployeeDTO[]> getEmployeesAsync() {
             return base.Channel.getEmployeesAsync();
+        }
+        
+        public Client.empServiceRef.EmployeeDTO[] getEmployeesByDepartmentName(string dept_name) {
+            return base.Channel.getEmployeesByDepartmentName(dept_name);
+        }
+        
+        public System.Threading.Tasks.Task<Client.empServiceRef.EmployeeDTO[]> getEmployeesByDepartmentNameAsync(string dept_name) {
+            return base.Channel.getEmployeesByDepartmentNameAsync(dept_name);
         }
         
         public string addEmployee(Client.empServiceRef.EmployeeDTO dto, string deptName) {
