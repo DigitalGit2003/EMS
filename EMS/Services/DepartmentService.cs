@@ -60,6 +60,12 @@ namespace EMS.Services
 
                 if (departmentToDelete != null)
                 {
+                    List<Project> projectsToDelete = context.Projects.Where(p => p.DepartmentId == departmentToDelete.DepartmentId).ToList();
+                    foreach (var project in projectsToDelete)
+                    {
+                        context.Projects.Remove(project);
+                    }
+
                     context.Departments.Remove(departmentToDelete);
                     context.SaveChanges();
                 }

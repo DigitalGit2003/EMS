@@ -100,12 +100,6 @@ namespace Client.projServiceRef {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectService/addProject", ReplyAction="http://tempuri.org/IProjectService/addProjectResponse")]
         System.Threading.Tasks.Task<string> addProjectAsync(Client.projServiceRef.Project p, string deptName);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectService/getProject", ReplyAction="http://tempuri.org/IProjectService/getProjectResponse")]
-        Client.projServiceRef.Project getProject(int p_id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectService/getProject", ReplyAction="http://tempuri.org/IProjectService/getProjectResponse")]
-        System.Threading.Tasks.Task<Client.projServiceRef.Project> getProjectAsync(int p_id);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectService/updateProject", ReplyAction="http://tempuri.org/IProjectService/updateProjectResponse")]
         string updateProject(int p_id, Client.projServiceRef.Project p);
         
@@ -117,12 +111,6 @@ namespace Client.projServiceRef {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectService/deleteProject", ReplyAction="http://tempuri.org/IProjectService/deleteProjectResponse")]
         System.Threading.Tasks.Task<string> deleteProjectAsync(int p_id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectService/getProjects", ReplyAction="http://tempuri.org/IProjectService/getProjectsResponse")]
-        Client.projServiceRef.Project[] getProjects();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectService/getProjects", ReplyAction="http://tempuri.org/IProjectService/getProjectsResponse")]
-        System.Threading.Tasks.Task<Client.projServiceRef.Project[]> getProjectsAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -160,14 +148,6 @@ namespace Client.projServiceRef {
             return base.Channel.addProjectAsync(p, deptName);
         }
         
-        public Client.projServiceRef.Project getProject(int p_id) {
-            return base.Channel.getProject(p_id);
-        }
-        
-        public System.Threading.Tasks.Task<Client.projServiceRef.Project> getProjectAsync(int p_id) {
-            return base.Channel.getProjectAsync(p_id);
-        }
-        
         public string updateProject(int p_id, Client.projServiceRef.Project p) {
             return base.Channel.updateProject(p_id, p);
         }
@@ -182,14 +162,6 @@ namespace Client.projServiceRef {
         
         public System.Threading.Tasks.Task<string> deleteProjectAsync(int p_id) {
             return base.Channel.deleteProjectAsync(p_id);
-        }
-        
-        public Client.projServiceRef.Project[] getProjects() {
-            return base.Channel.getProjects();
-        }
-        
-        public System.Threading.Tasks.Task<Client.projServiceRef.Project[]> getProjectsAsync() {
-            return base.Channel.getProjectsAsync();
         }
     }
 }

@@ -85,18 +85,12 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="Connected Services\empServiceRef\Client.empServiceRef.Employee.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <None Include="Connected Services\empServiceRef\configuration91.svcinfo" />
     <None Include="Connected Services\empServiceRef\configuration.svcinfo" />
     <None Include="Connected Services\empServiceRef\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="Connected Services\projServiceRef\Client.projServiceRef.Project.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <None Include="Connected Services\projServiceRef\configuration91.svcinfo" />
     <None Include="Connected Services\projServiceRef\configuration.svcinfo" />
     <None Include="Connected Services\projServiceRef\Reference.svcmap">

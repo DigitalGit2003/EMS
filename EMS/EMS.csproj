@@ -55,9 +55,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EMSDbContext.cs" />
-    <Compile Include="Migrations\202403011748515_EMS.cs" />
-    <Compile Include="Migrations\202403011748515_EMS.designer.cs">
-      <DependentUpon>202403011748515_EMS.cs</DependentUpon>
+    <Compile Include="Migrations\202403090423415_EMS.cs" />
+    <Compile Include="Migrations\202403090423415_EMS.designer.cs">
+      <DependentUpon>202403090423415_EMS.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Department.cs" />
@@ -76,8 +76,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202403011748515_EMS.resx">
-      <DependentUpon>202403011748515_EMS.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202403090423415_EMS.resx">
+      <DependentUpon>202403090423415_EMS.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
