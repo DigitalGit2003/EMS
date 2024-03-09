@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ServiceModel;
+using EMS.Models;
 
 
 namespace EMS.Services
@@ -12,10 +13,13 @@ namespace EMS.Services
     public interface IEmployeeService
     {
         [OperationContract]
-        string addEmployee(Employee e, string deptName);
+        EmployeeDTO getEmployee(int emp_id);
 
-        //[OperationContract]
-        //Employee getEmployee(int emp_id);
+        [OperationContract]
+        List<EmployeeDTO> getEmployees();
+
+        [OperationContract]
+        string addEmployee(EmployeeDTO dto, string deptName);
 
         [OperationContract]
         string updateEmployee(int emp_id, Employee e);
@@ -23,7 +27,5 @@ namespace EMS.Services
         [OperationContract]
         string deleteEmployee(int emp_id);
 
-        //[OperationContract]
-        //ICollection<Employee> getEmployees();
     }
 }

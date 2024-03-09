@@ -25,8 +25,8 @@
     <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="b4fd60d4-329a-446d-a9f2-84d8a320746a" SourceId="1" SourceUrl="net.tcp://localhost:8000/deptService/mex" />
     <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="66d36e8f-8d98-460a-8860-d5c3254d2a19" SourceId="1" SourceUrl="net.tcp://localhost:8000/deptService/mex" />
     <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="cfc80fae-102b-49d7-b6b6-832fbaf2a43a" SourceId="1" SourceUrl="net.tcp://localhost:8000/deptService/mex" />
+    <MetadataFile FileName="EMS.Models.xsd" MetadataType="Schema" ID="5359dc1a-07f3-42c8-a9f6-5a0ca630120c" SourceId="1" SourceUrl="net.tcp://localhost:8000/deptService/mex" />
     <MetadataFile FileName="EMS.xsd" MetadataType="Schema" ID="ab46b8e7-60ec-4cf6-b548-9218794e54ee" SourceId="1" SourceUrl="net.tcp://localhost:8000/deptService/mex" />
-    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="92dd8b82-82f3-464c-961e-54778c50057d" SourceId="1" SourceUrl="net.tcp://localhost:8000/deptService/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Client.deptServiceRef;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,14 @@ namespace Client
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                if (Request.QueryString["deptName"] != null)
+                {
+                    string departmentName = Request.QueryString["deptName"];
+                    Label1.Text = departmentName;
+                }
+            }
         }
     }
 }

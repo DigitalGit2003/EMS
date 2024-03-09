@@ -16,7 +16,13 @@ namespace Client
             if (!IsPostBack)
             {
                 deptServiceRef.DepartmentServiceClient dc = new deptServiceRef.DepartmentServiceClient("NetTcpBinding_IDepartmentService");
-                List<string> deptNames = dc.getDepartmentNames().ToList();
+                List<DepartmentDTO> depts = dc.getDepartments().ToList();
+
+                List<string> deptNames = new List<string>();
+                foreach (var dept in depts)
+                {
+                    deptNames.Add(dept.Name);
+                }
 
                 ddlDepts.DataSource = deptNames;
                 ddlDepts.DataBind();
@@ -30,13 +36,13 @@ namespace Client
             string deptName = ddlDepts.SelectedValue.ToString();
 
 
-            Employee emp = new Employee();
-            emp.Name = name;
-            emp.Salary = salary;
+            EmployeeDTO empDTO = new EmployeeDTO();
+            empDTO.Name = name;
+            empDTO.Salary = salary;
 
 
             empServiceRef.EmployeeServiceClient ec = new empServiceRef.EmployeeServiceClient("NetTcpBinding_IEmployeeService");
-            string s = ec.addEmployee(emp, deptName);
+            string s = ec.addEmployee(empDTO, deptName);
 
             Label1.Text = s;
         }

@@ -9,17 +9,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EMS
 {
-    [DataContract]
     public class Department
     {
-        [DataMember]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int DepartmentId { get; set; }
 
-        [DataMember]
         public string Name { get; set; }
 
-        [DataMember]
         public string Location { get; set; }
 
         public virtual ICollection<Employee> Employees { get; set; }

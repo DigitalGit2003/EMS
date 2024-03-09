@@ -1,4 +1,5 @@
-﻿using Client.projServiceRef;
+﻿using Client.deptServiceRef;
+using Client.projServiceRef;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,13 @@ namespace Client
             if (!IsPostBack)
             {
                 deptServiceRef.DepartmentServiceClient dc = new deptServiceRef.DepartmentServiceClient("NetTcpBinding_IDepartmentService");
-                List<string> deptNames = dc.getDepartmentNames().ToList();
+                List<DepartmentDTO> depts = dc.getDepartments().ToList();
+
+                List<string> deptNames = new List<string>();
+                foreach(var dept in depts)
+                {
+                    deptNames.Add(dept.Name);
+                }
 
                 ddlDepts.DataSource = deptNames;
                 ddlDepts.DataBind();
@@ -28,12 +35,12 @@ namespace Client
             string status = tbStatus.Text;
             string deptName = ddlDepts.SelectedValue.ToString();
 
-            Project proj = new Project();
-            proj.Title = title;
-            proj.Status = status;
+            ProjectDTO projDTO = new ProjectDTO();
+            projDTO.Title = title;
+            projDTO.Status = status;
 
             projServiceRef.ProjectServiceClient pc = new projServiceRef.ProjectServiceClient("NetTcpBinding_IProjectService");
-            string s = pc.addProject(proj, deptName);
+            string s = pc.addProject(projDTO, deptName);
 
             Label1.Text = s;
         }

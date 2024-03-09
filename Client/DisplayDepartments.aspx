@@ -15,7 +15,7 @@
                     <asp:BoundField DataField="Location" HeaderText="Location" />
                     <asp:TemplateField HeaderText="Actions">
                         <ItemTemplate>
-                            <asp:Button ID="btnUpdate" runat="server" Text="Update" CommandArgument='<%# Container.DataItemIndex %>' ForeColor="Blue" />
+                            <asp:Button ID="btnUpdate" runat="server" Text="Update" CommandArgument='<%# Eval("Name") + "," + Container.DataItemIndex %>' ForeColor="Blue" OnClick="btnUpdate_Click" />
                             <asp:Button ID="btnDelete" runat="server" Text="Delete" CommandArgument='<%# Eval("Name") + "," + Container.DataItemIndex %>' ForeColor="Red" OnClick="btnDelete_Click" />
                         </ItemTemplate>
                     </asp:TemplateField>

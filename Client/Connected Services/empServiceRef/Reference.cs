@@ -15,6 +15,83 @@ namespace Client.empServiceRef {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EmployeeDTO", Namespace="http://schemas.datacontract.org/2004/07/EMS.Models")]
+    [System.SerializableAttribute()]
+    public partial class EmployeeDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int EmployeeIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int SalaryField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int EmployeeId {
+            get {
+                return this.EmployeeIdField;
+            }
+            set {
+                if ((this.EmployeeIdField.Equals(value) != true)) {
+                    this.EmployeeIdField = value;
+                    this.RaisePropertyChanged("EmployeeId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Salary {
+            get {
+                return this.SalaryField;
+            }
+            set {
+                if ((this.SalaryField.Equals(value) != true)) {
+                    this.SalaryField = value;
+                    this.RaisePropertyChanged("Salary");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Employee", Namespace="http://schemas.datacontract.org/2004/07/EMS")]
     [System.SerializableAttribute()]
     public partial class Employee : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -94,11 +171,23 @@ namespace Client.empServiceRef {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="empServiceRef.IEmployeeService")]
     public interface IEmployeeService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmployeeService/addEmployee", ReplyAction="http://tempuri.org/IEmployeeService/addEmployeeResponse")]
-        string addEmployee(Client.empServiceRef.Employee e, string deptName);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmployeeService/getEmployee", ReplyAction="http://tempuri.org/IEmployeeService/getEmployeeResponse")]
+        Client.empServiceRef.EmployeeDTO getEmployee(int emp_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmployeeService/getEmployee", ReplyAction="http://tempuri.org/IEmployeeService/getEmployeeResponse")]
+        System.Threading.Tasks.Task<Client.empServiceRef.EmployeeDTO> getEmployeeAsync(int emp_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmployeeService/getEmployees", ReplyAction="http://tempuri.org/IEmployeeService/getEmployeesResponse")]
+        Client.empServiceRef.EmployeeDTO[] getEmployees();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmployeeService/getEmployees", ReplyAction="http://tempuri.org/IEmployeeService/getEmployeesResponse")]
+        System.Threading.Tasks.Task<Client.empServiceRef.EmployeeDTO[]> getEmployeesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmployeeService/addEmployee", ReplyAction="http://tempuri.org/IEmployeeService/addEmployeeResponse")]
-        System.Threading.Tasks.Task<string> addEmployeeAsync(Client.empServiceRef.Employee e, string deptName);
+        string addEmployee(Client.empServiceRef.EmployeeDTO dto, string deptName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmployeeService/addEmployee", ReplyAction="http://tempuri.org/IEmployeeService/addEmployeeResponse")]
+        System.Threading.Tasks.Task<string> addEmployeeAsync(Client.empServiceRef.EmployeeDTO dto, string deptName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmployeeService/updateEmployee", ReplyAction="http://tempuri.org/IEmployeeService/updateEmployeeResponse")]
         string updateEmployee(int emp_id, Client.empServiceRef.Employee e);
@@ -140,12 +229,28 @@ namespace Client.empServiceRef {
                 base(binding, remoteAddress) {
         }
         
-        public string addEmployee(Client.empServiceRef.Employee e, string deptName) {
-            return base.Channel.addEmployee(e, deptName);
+        public Client.empServiceRef.EmployeeDTO getEmployee(int emp_id) {
+            return base.Channel.getEmployee(emp_id);
         }
         
-        public System.Threading.Tasks.Task<string> addEmployeeAsync(Client.empServiceRef.Employee e, string deptName) {
-            return base.Channel.addEmployeeAsync(e, deptName);
+        public System.Threading.Tasks.Task<Client.empServiceRef.EmployeeDTO> getEmployeeAsync(int emp_id) {
+            return base.Channel.getEmployeeAsync(emp_id);
+        }
+        
+        public Client.empServiceRef.EmployeeDTO[] getEmployees() {
+            return base.Channel.getEmployees();
+        }
+        
+        public System.Threading.Tasks.Task<Client.empServiceRef.EmployeeDTO[]> getEmployeesAsync() {
+            return base.Channel.getEmployeesAsync();
+        }
+        
+        public string addEmployee(Client.empServiceRef.EmployeeDTO dto, string deptName) {
+            return base.Channel.addEmployee(dto, deptName);
+        }
+        
+        public System.Threading.Tasks.Task<string> addEmployeeAsync(Client.empServiceRef.EmployeeDTO dto, string deptName) {
+            return base.Channel.addEmployeeAsync(dto, deptName);
         }
         
         public string updateEmployee(int emp_id, Client.empServiceRef.Employee e) {

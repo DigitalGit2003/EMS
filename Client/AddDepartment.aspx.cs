@@ -12,21 +12,21 @@ namespace Client
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+     
         }
 
         protected void btnAddDept_Click(object sender, EventArgs e)
         {
             string name = tbName.Text;
             string location = tbLocation.Text;
-
-            Department department = new Department();
-            department.Name = name;
-            department.Location = location;
+            
+            DepartmentDTO departmentDTO = new DepartmentDTO();
+            departmentDTO.Name = name;
+            departmentDTO.Location = location;
 
             deptServiceRef.DepartmentServiceClient dc = new deptServiceRef.DepartmentServiceClient("NetTcpBinding_IDepartmentService");
-            string s = dc.addDepartment(department);
-
+            string s = dc.addDepartment(departmentDTO);
+            
             Label1.Text = s;
         }
     }

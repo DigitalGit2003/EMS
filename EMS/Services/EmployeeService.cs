@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EMS.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -10,10 +11,59 @@ namespace EMS.Services
 {
     public class EmployeeService : IEmployeeService
     {
-        public string addEmployee(Employee e, string deptName)
+        private static EmployeeDTO convertToDTO(Employee e)
+        {
+            return new EmployeeDTO
+            {
+                EmployeeId = e.EmployeeId,
+                Name = e.Name,
+                Salary = e.Salary
+            };
+        }
+
+        private static Employee convertFromDTO(EmployeeDTO dto)
+        {
+            return new Employee
+            {
+                EmployeeId = dto.EmployeeId,
+                Name = dto.Name,
+                Salary = dto.Salary
+            };
+        }
+        // ----------------------------------------------------------------------
+
+        public EmployeeDTO getEmployee(int emp_id)
+        {
+            using (var context = new EMSDbContext())
+            {
+                Employee emp = context.Employees.Find(emp_id);
+                EmployeeDTO result = convertToDTO(emp);
+                return result;
+            }
+        }
+
+        public List<EmployeeDTO> getEmployees()
+        {
+            using (var context = new EMSDbContext())
+            {
+                List<Employee> emps = context.Employees.ToList();
+                List<EmployeeDTO> empDTOs = new List<EmployeeDTO>();
+                foreach (var emp in emps)
+                {
+                    EmployeeDTO empDTO = convertToDTO(emp);
+                    empDTOs.Add(empDTO);
+                }
+
+                return empDTOs;
+            }
+        }
+        
+        // ----------------------------------------------------------------------
+        public string addEmployee(EmployeeDTO dto, string deptName)
         { 
             using (var context = new EMSDbContext())
             {
+                Employee e = convertFromDTO(dto);
                 Department dept = context.Departments.FirstOrDefault(d => d.Name == deptName);
                 e.Department = dept;
                 context.Employees.Add(e);
@@ -22,18 +72,6 @@ namespace EMS.Services
             return "Employee added.";
         }
 
-        // ----------------------------------------------------------------------
-
-        //public Employee getEmployee(int emp_id)
-        //{
-        //    using (var context = new EMSDbContext())
-        //    {
-        //        Employee emp = context.Employees.Find(emp_id);
-        //        return emp;
-        //    }
-        //}
-
-        // ----------------------------------------------------------------------
         public string updateEmployee(int emp_id, Employee e)
         {
             using (var context = new EMSDbContext())
@@ -48,7 +86,6 @@ namespace EMS.Services
             return "Employee updated.";
         }
 
-        // ----------------------------------------------------------------------
         public string deleteEmployee(int emp_id)
         {
             using (var context = new EMSDbContext())
@@ -68,16 +105,5 @@ namespace EMS.Services
             return "Employee deleted.";
         }
 
-        // ----------------------------------------------------------------------
-
-        //public ICollection<Employee> getEmployees()
-        //{
-        //    using (var context = new EMSDbContext())
-        //    {
-        //        return context.Employees.ToList();
-        //    }
-        //}
-
-        // ----------------------------------------------------------------------
     }
 }

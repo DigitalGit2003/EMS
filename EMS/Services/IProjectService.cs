@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ServiceModel;
+using EMS.Models;
 
 namespace EMS.Services
 {
@@ -11,10 +12,14 @@ namespace EMS.Services
     public interface IProjectService
     {
         [OperationContract]
-        string addProject(Project p, string deptName);
+        ProjectDTO getProject(int p_id);
 
-        //[OperationContract]
-        //Project getProject(int p_id);
+        [OperationContract]
+        List<ProjectDTO> getProjects();
+
+        [OperationContract]
+        string addProject(ProjectDTO dto, string deptName);
+
 
         [OperationContract]
         string updateProject(int p_id, Project p);
@@ -22,7 +27,5 @@ namespace EMS.Services
         [OperationContract]
         string deleteProject(int p_id);
 
-        //[OperationContract]
-        //ICollection<Project> getProjects();
     }
 }
