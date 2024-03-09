@@ -18,8 +18,10 @@ namespace EMS.Services
         List<ProjectDTO> getProjects();
 
         [OperationContract]
-        string addProject(ProjectDTO dto, string deptName);
+        List<ProjectDTO> getProjectsByDepartmentName(string dept_name);
 
+        [OperationContract]
+        string addProject(ProjectDTO dto, string deptName);
 
         [OperationContract]
         string updateProject(int p_id, Project p);

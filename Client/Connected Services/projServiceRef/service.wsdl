@@ -53,6 +53,12 @@
   <wsdl:message name="IProjectService_getProjects_OutputMessage">
     <wsdl:part name="parameters" element="tns:getProjectsResponse" />
   </wsdl:message>
+  <wsdl:message name="IProjectService_getProjectsByDepartmentName_InputMessage">
+    <wsdl:part name="parameters" element="tns:getProjectsByDepartmentName" />
+  </wsdl:message>
+  <wsdl:message name="IProjectService_getProjectsByDepartmentName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getProjectsByDepartmentNameResponse" />
+  </wsdl:message>
   <wsdl:message name="IProjectService_addProject_InputMessage">
     <wsdl:part name="parameters" element="tns:addProject" />
   </wsdl:message>
@@ -79,6 +85,10 @@
     <wsdl:operation name="getProjects">
       <wsdl:input wsaw:Action="http://tempuri.org/IProjectService/getProjects" message="tns:IProjectService_getProjects_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProjectService/getProjectsResponse" message="tns:IProjectService_getProjects_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getProjectsByDepartmentName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProjectService/getProjectsByDepartmentName" message="tns:IProjectService_getProjectsByDepartmentName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProjectService/getProjectsByDepartmentNameResponse" message="tns:IProjectService_getProjectsByDepartmentName_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="addProject">
       <wsdl:input wsaw:Action="http://tempuri.org/IProjectService/addProject" message="tns:IProjectService_addProject_InputMessage" />
@@ -108,6 +118,15 @@
     </wsdl:operation>
     <wsdl:operation name="getProjects">
       <soap12:operation soapAction="http://tempuri.org/IProjectService/getProjects" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProjectsByDepartmentName">
+      <soap12:operation soapAction="http://tempuri.org/IProjectService/getProjectsByDepartmentName" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

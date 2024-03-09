@@ -56,6 +56,24 @@ namespace EMS.Services
             }
         }
 
+        public List<ProjectDTO> getProjectsByDepartmentName(string dept_name)
+        {
+            using (var context = new EMSDbContext())
+            {
+                Department dept = context.Departments.FirstOrDefault(d => d.Name == dept_name);
+
+                List<Project> projs = context.Projects.Where(p => p.DepartmentId == dept.DepartmentId).ToList();
+                List<ProjectDTO> projDTOs = new List<ProjectDTO>();
+                foreach (var proj in projs)
+                {
+                    ProjectDTO projDTO = convertToDTO(proj);
+                    projDTOs.Add(projDTO);
+                }
+
+                return projDTOs;
+            }
+        }
+
         // ----------------------------------------------------------------------
 
         public string addProject(ProjectDTO dto, string deptName)

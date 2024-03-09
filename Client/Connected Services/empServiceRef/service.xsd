@@ -28,10 +28,24 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="getEmployeesByDepartmentName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="dept_name" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getEmployeesByDepartmentNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/EMS.Models" minOccurs="0" name="getEmployeesByDepartmentNameResult" nillable="true" type="q3:ArrayOfEmployeeDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="addEmployee">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/EMS.Models" minOccurs="0" name="dto" nillable="true" type="q3:EmployeeDTO" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/EMS.Models" minOccurs="0" name="dto" nillable="true" type="q4:EmployeeDTO" />
         <xs:element minOccurs="0" name="deptName" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -47,7 +61,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="emp_id" type="xs:int" />
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/EMS" minOccurs="0" name="e" nillable="true" type="q4:Employee" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/EMS" minOccurs="0" name="e" nillable="true" type="q5:Employee" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

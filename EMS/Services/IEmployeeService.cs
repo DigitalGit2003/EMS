@@ -19,6 +19,9 @@ namespace EMS.Services
         List<EmployeeDTO> getEmployees();
 
         [OperationContract]
+        List<EmployeeDTO> getEmployeesByDepartmentName(string dept_name);
+
+        [OperationContract]
         string addEmployee(EmployeeDTO dto, string deptName);
 
         [OperationContract]
