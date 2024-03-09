@@ -21,7 +21,7 @@ namespace EMS.Services
         string addDepartment(DepartmentDTO d);
 
         [OperationContract]
-        string updateDepartment(string dept_name, Department d);
+        string updateDepartment(string dept_name, DepartmentDTO d);
 
         [OperationContract]
         string deleteDepartment(string dept_name);

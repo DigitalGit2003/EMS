@@ -68,7 +68,7 @@ namespace EMS.Services
             return $"Department {dto.Name} is added.";
         }
 
-        public string updateDepartment(string dept_name, Department d)
+        public string updateDepartment(string dept_name, DepartmentDTO d)
         {
             using (var context = new EMSDbContext())
             {

@@ -15,7 +15,7 @@ namespace Client
         {
             if (!IsPostBack)
             {
-                deptServiceRef.DepartmentServiceClient dc = new deptServiceRef.DepartmentServiceClient("NetTcpBinding_IDepartmentService");
+                DepartmentServiceClient dc = new DepartmentServiceClient();
                 List<DepartmentDTO> depts = dc.getDepartments().ToList();
 
                 List<string> deptNames = new List<string>();
@@ -41,7 +41,7 @@ namespace Client
             empDTO.Salary = salary;
 
 
-            empServiceRef.EmployeeServiceClient ec = new empServiceRef.EmployeeServiceClient("NetTcpBinding_IEmployeeService");
+            EmployeeServiceClient ec = new EmployeeServiceClient();
             string s = ec.addEmployee(empDTO, deptName);
 
             Label1.Text = s;

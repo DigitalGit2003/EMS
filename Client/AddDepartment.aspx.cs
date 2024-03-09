@@ -24,7 +24,7 @@ namespace Client
             departmentDTO.Name = name;
             departmentDTO.Location = location;
 
-            deptServiceRef.DepartmentServiceClient dc = new deptServiceRef.DepartmentServiceClient("NetTcpBinding_IDepartmentService");
+            DepartmentServiceClient dc = new DepartmentServiceClient();
             string s = dc.addDepartment(departmentDTO);
             
             Label1.Text = s;
