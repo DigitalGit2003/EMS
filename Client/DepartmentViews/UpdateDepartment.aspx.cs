@@ -31,19 +31,19 @@ namespace Client
 
         protected void btnUpdateDept_Click(object sender, EventArgs e)
         {
-            string departmentName = Request.QueryString["deptName"];
+            string deptName = Request.QueryString["deptName"];
 
             string name = tbName.Text;
             string location = tbLocation.Text;
 
-            DepartmentDTO departmentDTO = new DepartmentDTO();
-            departmentDTO.Name = name;
-            departmentDTO.Location = location;
+            DepartmentDTO deptDTO = new DepartmentDTO();
+            deptDTO.Name = name;
+            deptDTO.Location = location;
 
             DepartmentServiceClient dc = new DepartmentServiceClient();
-            string s = dc.updateDepartment(departmentName, departmentDTO);
+            string s = dc.updateDepartment(deptName, deptDTO);
 
-            Label1.Text = s;
+            Response.Redirect("DisplayDepartments.aspx");
         }
     }
 }

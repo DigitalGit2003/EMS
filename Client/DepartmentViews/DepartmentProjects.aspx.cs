@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -55,6 +56,42 @@ namespace Client.DepartmentViews
                 gvDeptProjects.DataSource = dtDeptProjects;
                 gvDeptProjects.DataBind();
             }
+        }
+
+
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            Button btnDelete = (Button)sender;
+            GridViewRow row = (GridViewRow)btnDelete.NamingContainer;
+
+            string commandArgument = btnDelete.CommandArgument;
+            string[] args = commandArgument.Split(',');
+
+            string proj_title = args[0];
+            int rowIndex = Convert.ToInt32(args[1]);
+
+            ProjectServiceClient pc = new ProjectServiceClient();
+            string s = pc.deleteProject(proj_title);
+
+            PopulateGridView();
+            Label1.Text = proj_title + s;
+            Label1.ForeColor = System.Drawing.Color.Red;
+        }
+
+        protected void btnUpdate_Click(object sender, EventArgs e)
+        {
+            string dept_name = Request.QueryString["deptName"];
+
+            Button btnUpdate = (Button)sender;
+            GridViewRow row = (GridViewRow)btnUpdate.NamingContainer;
+
+            string commandArgument = btnUpdate.CommandArgument;
+            string[] args = commandArgument.Split(',');
+
+            string proj_title = args[0];
+            int rowIndex = Convert.ToInt32(args[1]);
+
+            Response.Redirect("/ProjectViews/UpdateProject.aspx?projTitle=" + Server.UrlEncode(proj_title) + "&deptName=" + Server.UrlEncode(dept_name));
         }
     }
 }

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -56,6 +57,42 @@ namespace Client.DepartmentViews
                 gvDeptEmployees.DataSource = dtDeptEmployees;
                 gvDeptEmployees.DataBind();
             }
+        }
+
+
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            Button btnDelete = (Button)sender;
+            GridViewRow row = (GridViewRow)btnDelete.NamingContainer;
+
+            string commandArgument = btnDelete.CommandArgument;
+            string[] args = commandArgument.Split(',');
+
+            string emp_name = args[0];
+            int rowIndex = Convert.ToInt32(args[1]);
+
+            EmployeeServiceClient ec = new EmployeeServiceClient();
+            string s = ec.deleteEmployee(emp_name);
+
+            PopulateGridView();
+            Label1.Text = emp_name + s;
+            Label1.ForeColor = System.Drawing.Color.Red;
+        }
+
+        protected void btnUpdate_Click(object sender, EventArgs e)
+        {
+            string dept_name = Request.QueryString["deptName"];
+
+            Button btnUpdate = (Button)sender;
+            GridViewRow row = (GridViewRow)btnUpdate.NamingContainer;
+
+            string commandArgument = btnUpdate.CommandArgument;
+            string[] args = commandArgument.Split(',');
+
+            string emp_name = args[0];
+            int rowIndex = Convert.ToInt32(args[1]);
+
+            Response.Redirect("/EmployeeViews/UpdateEmployee.aspx?empName=" + Server.UrlEncode(emp_name) + "&deptName=" + Server.UrlEncode(dept_name));
         }
     }
 }

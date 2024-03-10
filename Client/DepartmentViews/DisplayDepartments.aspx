@@ -5,10 +5,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <link rel="stylesheet" type="text/css" href="Styles.css" />
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
+        <div class="navbar">
+            <a href="/DepartmentViews/AddDepartment.aspx">Add Department</a>
+            <a href="/DepartmentViews/DisplayDepartments.aspx">Display Departments</a>
+        </div>
+
+        <div style="padding:20px">
             <asp:GridView ID="gvDepartments" runat="server" AutoGenerateColumns="False">
                 <Columns>
                     <asp:BoundField DataField="Name" HeaderText="Name" />
@@ -30,7 +36,7 @@
             </asp:GridView>
             <br />
             <br />
-            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+            <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
         </div>
     </form>
 </body>
