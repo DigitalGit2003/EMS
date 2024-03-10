@@ -69,24 +69,6 @@ namespace Client
         protected global::System.Web.UI.WebControls.TextBox tbStatus;
 
         /// <summary>
-        /// lblDept control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDept;
-
-        /// <summary>
-        /// ddlDepts control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlDepts;
-
-        /// <summary>
         /// btnAddProj control.
         /// </summary>
         /// <remarks>

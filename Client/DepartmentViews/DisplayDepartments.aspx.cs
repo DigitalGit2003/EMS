@@ -59,15 +59,16 @@ namespace Client
             string s = dc.deleteDepartment(dept_name);
 
             PopulateGridView();
-            Label1.Text = s;
+            Label1.Text = dept_name + s;
+            Label1.ForeColor = System.Drawing.Color.Red;
         }
 
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
-            Button btnDelete = (Button)sender;
-            GridViewRow row = (GridViewRow)btnDelete.NamingContainer;
+            Button btnUpdate = (Button)sender;
+            GridViewRow row = (GridViewRow)btnUpdate.NamingContainer;
 
-            string commandArgument = btnDelete.CommandArgument;
+            string commandArgument = btnUpdate.CommandArgument;
             string[] args = commandArgument.Split(',');
 
             string dept_name = args[0];

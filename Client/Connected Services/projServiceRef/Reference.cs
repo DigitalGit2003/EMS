@@ -90,92 +90,15 @@ namespace Client.projServiceRef {
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Project", Namespace="http://schemas.datacontract.org/2004/07/EMS")]
-    [System.SerializableAttribute()]
-    public partial class Project : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int ProjectIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string StatusField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string TitleField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int ProjectId {
-            get {
-                return this.ProjectIdField;
-            }
-            set {
-                if ((this.ProjectIdField.Equals(value) != true)) {
-                    this.ProjectIdField = value;
-                    this.RaisePropertyChanged("ProjectId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Status {
-            get {
-                return this.StatusField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.StatusField, value) != true)) {
-                    this.StatusField = value;
-                    this.RaisePropertyChanged("Status");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Title {
-            get {
-                return this.TitleField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TitleField, value) != true)) {
-                    this.TitleField = value;
-                    this.RaisePropertyChanged("Title");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="projServiceRef.IProjectService")]
     public interface IProjectService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectService/getProject", ReplyAction="http://tempuri.org/IProjectService/getProjectResponse")]
-        Client.projServiceRef.ProjectDTO getProject(int p_id);
+        Client.projServiceRef.ProjectDTO getProject(string proj_title);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectService/getProject", ReplyAction="http://tempuri.org/IProjectService/getProjectResponse")]
-        System.Threading.Tasks.Task<Client.projServiceRef.ProjectDTO> getProjectAsync(int p_id);
+        System.Threading.Tasks.Task<Client.projServiceRef.ProjectDTO> getProjectAsync(string proj_title);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectService/getProjects", ReplyAction="http://tempuri.org/IProjectService/getProjectsResponse")]
         Client.projServiceRef.ProjectDTO[] getProjects();
@@ -196,16 +119,16 @@ namespace Client.projServiceRef {
         System.Threading.Tasks.Task<string> addProjectAsync(Client.projServiceRef.ProjectDTO dto, string deptName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectService/updateProject", ReplyAction="http://tempuri.org/IProjectService/updateProjectResponse")]
-        string updateProject(int p_id, Client.projServiceRef.Project p);
+        string updateProject(string proj_title, Client.projServiceRef.ProjectDTO p);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectService/updateProject", ReplyAction="http://tempuri.org/IProjectService/updateProjectResponse")]
-        System.Threading.Tasks.Task<string> updateProjectAsync(int p_id, Client.projServiceRef.Project p);
+        System.Threading.Tasks.Task<string> updateProjectAsync(string proj_title, Client.projServiceRef.ProjectDTO p);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectService/deleteProject", ReplyAction="http://tempuri.org/IProjectService/deleteProjectResponse")]
-        string deleteProject(int p_id);
+        string deleteProject(string proj_title);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectService/deleteProject", ReplyAction="http://tempuri.org/IProjectService/deleteProjectResponse")]
-        System.Threading.Tasks.Task<string> deleteProjectAsync(int p_id);
+        System.Threading.Tasks.Task<string> deleteProjectAsync(string proj_title);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -235,12 +158,12 @@ namespace Client.projServiceRef {
                 base(binding, remoteAddress) {
         }
         
-        public Client.projServiceRef.ProjectDTO getProject(int p_id) {
-            return base.Channel.getProject(p_id);
+        public Client.projServiceRef.ProjectDTO getProject(string proj_title) {
+            return base.Channel.getProject(proj_title);
         }
         
-        public System.Threading.Tasks.Task<Client.projServiceRef.ProjectDTO> getProjectAsync(int p_id) {
-            return base.Channel.getProjectAsync(p_id);
+        public System.Threading.Tasks.Task<Client.projServiceRef.ProjectDTO> getProjectAsync(string proj_title) {
+            return base.Channel.getProjectAsync(proj_title);
         }
         
         public Client.projServiceRef.ProjectDTO[] getProjects() {
@@ -267,20 +190,20 @@ namespace Client.projServiceRef {
             return base.Channel.addProjectAsync(dto, deptName);
         }
         
-        public string updateProject(int p_id, Client.projServiceRef.Project p) {
-            return base.Channel.updateProject(p_id, p);
+        public string updateProject(string proj_title, Client.projServiceRef.ProjectDTO p) {
+            return base.Channel.updateProject(proj_title, p);
         }
         
-        public System.Threading.Tasks.Task<string> updateProjectAsync(int p_id, Client.projServiceRef.Project p) {
-            return base.Channel.updateProjectAsync(p_id, p);
+        public System.Threading.Tasks.Task<string> updateProjectAsync(string proj_title, Client.projServiceRef.ProjectDTO p) {
+            return base.Channel.updateProjectAsync(proj_title, p);
         }
         
-        public string deleteProject(int p_id) {
-            return base.Channel.deleteProject(p_id);
+        public string deleteProject(string proj_title) {
+            return base.Channel.deleteProject(proj_title);
         }
         
-        public System.Threading.Tasks.Task<string> deleteProjectAsync(int p_id) {
-            return base.Channel.deleteProjectAsync(p_id);
+        public System.Threading.Tasks.Task<string> deleteProjectAsync(string proj_title) {
+            return base.Channel.deleteProjectAsync(proj_title);
         }
     }
 }

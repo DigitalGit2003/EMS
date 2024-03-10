@@ -30,11 +30,11 @@ namespace EMS.Services
         }
         // ----------------------------------------------------------------------
 
-        public ProjectDTO getProject(int p_id)
+        public ProjectDTO getProject(string proj_title)
         {
             using (var context = new EMSDbContext())
             {
-                Project proj = context.Projects.Find(p_id);
+                Project proj = context.Projects.FirstOrDefault(pp => pp.Title == proj_title);
                 ProjectDTO result = convertToDTO(proj);
                 return result;
             }
@@ -89,11 +89,11 @@ namespace EMS.Services
             return "Project added.";
         }
 
-        public string updateProject(int p_id, Project p)
+        public string updateProject(string proj_title, ProjectDTO p)
         {
             using (var context = new EMSDbContext())
             {
-                Project proj = context.Projects.Find(p_id);
+                Project proj = context.Projects.FirstOrDefault(pp => pp.Title == proj_title);
                 proj.Title = p.Title;
                 proj.Status = p.Status;
                 context.SaveChanges();
@@ -102,12 +102,11 @@ namespace EMS.Services
             return "Project updated.";
         }
 
-      
-        public string deleteProject(int p_id)
+        public string deleteProject(string proj_title)
         {
             using (var context = new EMSDbContext())
             {
-                var projectToDelete = context.Projects.FirstOrDefault(p => p.ProjectId == p_id);
+                var projectToDelete = context.Projects.FirstOrDefault(p => p.Title == proj_title);
 
                 if (projectToDelete != null)
                 {

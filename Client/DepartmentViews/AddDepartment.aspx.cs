@@ -26,8 +26,9 @@ namespace Client
 
             DepartmentServiceClient dc = new DepartmentServiceClient();
             string s = dc.addDepartment(departmentDTO);
-            
+
             Label1.Text = s;
+            Label1.ForeColor = System.Drawing.Color.Green;
         }
     }
 }

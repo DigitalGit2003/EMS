@@ -13,7 +13,7 @@ namespace EMS.Services
     public interface IEmployeeService
     {
         [OperationContract]
-        EmployeeDTO getEmployee(int emp_id);
+        EmployeeDTO getEmployee(string emp_name);
 
         [OperationContract]
         List<EmployeeDTO> getEmployees();
@@ -25,10 +25,10 @@ namespace EMS.Services
         string addEmployee(EmployeeDTO dto, string deptName);
 
         [OperationContract]
-        string updateEmployee(int emp_id, Employee e);
+        string updateEmployee(string emp_name, EmployeeDTO e);
 
         [OperationContract]
-        string deleteEmployee(int emp_id);
+        string deleteEmployee(string emp_name);
 
     }
 }

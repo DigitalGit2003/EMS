@@ -90,92 +90,15 @@ namespace Client.empServiceRef {
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Employee", Namespace="http://schemas.datacontract.org/2004/07/EMS")]
-    [System.SerializableAttribute()]
-    public partial class Employee : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int EmployeeIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int SalaryField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int EmployeeId {
-            get {
-                return this.EmployeeIdField;
-            }
-            set {
-                if ((this.EmployeeIdField.Equals(value) != true)) {
-                    this.EmployeeIdField = value;
-                    this.RaisePropertyChanged("EmployeeId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Salary {
-            get {
-                return this.SalaryField;
-            }
-            set {
-                if ((this.SalaryField.Equals(value) != true)) {
-                    this.SalaryField = value;
-                    this.RaisePropertyChanged("Salary");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="empServiceRef.IEmployeeService")]
     public interface IEmployeeService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmployeeService/getEmployee", ReplyAction="http://tempuri.org/IEmployeeService/getEmployeeResponse")]
-        Client.empServiceRef.EmployeeDTO getEmployee(int emp_id);
+        Client.empServiceRef.EmployeeDTO getEmployee(string emp_name);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmployeeService/getEmployee", ReplyAction="http://tempuri.org/IEmployeeService/getEmployeeResponse")]
-        System.Threading.Tasks.Task<Client.empServiceRef.EmployeeDTO> getEmployeeAsync(int emp_id);
+        System.Threading.Tasks.Task<Client.empServiceRef.EmployeeDTO> getEmployeeAsync(string emp_name);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmployeeService/getEmployees", ReplyAction="http://tempuri.org/IEmployeeService/getEmployeesResponse")]
         Client.empServiceRef.EmployeeDTO[] getEmployees();
@@ -196,16 +119,16 @@ namespace Client.empServiceRef {
         System.Threading.Tasks.Task<string> addEmployeeAsync(Client.empServiceRef.EmployeeDTO dto, string deptName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmployeeService/updateEmployee", ReplyAction="http://tempuri.org/IEmployeeService/updateEmployeeResponse")]
-        string updateEmployee(int emp_id, Client.empServiceRef.Employee e);
+        string updateEmployee(string emp_name, Client.empServiceRef.EmployeeDTO e);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmployeeService/updateEmployee", ReplyAction="http://tempuri.org/IEmployeeService/updateEmployeeResponse")]
-        System.Threading.Tasks.Task<string> updateEmployeeAsync(int emp_id, Client.empServiceRef.Employee e);
+        System.Threading.Tasks.Task<string> updateEmployeeAsync(string emp_name, Client.empServiceRef.EmployeeDTO e);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmployeeService/deleteEmployee", ReplyAction="http://tempuri.org/IEmployeeService/deleteEmployeeResponse")]
-        string deleteEmployee(int emp_id);
+        string deleteEmployee(string emp_name);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmployeeService/deleteEmployee", ReplyAction="http://tempuri.org/IEmployeeService/deleteEmployeeResponse")]
-        System.Threading.Tasks.Task<string> deleteEmployeeAsync(int emp_id);
+        System.Threading.Tasks.Task<string> deleteEmployeeAsync(string emp_name);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -235,12 +158,12 @@ namespace Client.empServiceRef {
                 base(binding, remoteAddress) {
         }
         
-        public Client.empServiceRef.EmployeeDTO getEmployee(int emp_id) {
-            return base.Channel.getEmployee(emp_id);
+        public Client.empServiceRef.EmployeeDTO getEmployee(string emp_name) {
+            return base.Channel.getEmployee(emp_name);
         }
         
-        public System.Threading.Tasks.Task<Client.empServiceRef.EmployeeDTO> getEmployeeAsync(int emp_id) {
-            return base.Channel.getEmployeeAsync(emp_id);
+        public System.Threading.Tasks.Task<Client.empServiceRef.EmployeeDTO> getEmployeeAsync(string emp_name) {
+            return base.Channel.getEmployeeAsync(emp_name);
         }
         
         public Client.empServiceRef.EmployeeDTO[] getEmployees() {
@@ -267,20 +190,20 @@ namespace Client.empServiceRef {
             return base.Channel.addEmployeeAsync(dto, deptName);
         }
         
-        public string updateEmployee(int emp_id, Client.empServiceRef.Employee e) {
-            return base.Channel.updateEmployee(emp_id, e);
+        public string updateEmployee(string emp_name, Client.empServiceRef.EmployeeDTO e) {
+            return base.Channel.updateEmployee(emp_name, e);
         }
         
-        public System.Threading.Tasks.Task<string> updateEmployeeAsync(int emp_id, Client.empServiceRef.Employee e) {
-            return base.Channel.updateEmployeeAsync(emp_id, e);
+        public System.Threading.Tasks.Task<string> updateEmployeeAsync(string emp_name, Client.empServiceRef.EmployeeDTO e) {
+            return base.Channel.updateEmployeeAsync(emp_name, e);
         }
         
-        public string deleteEmployee(int emp_id) {
-            return base.Channel.deleteEmployee(emp_id);
+        public string deleteEmployee(string emp_name) {
+            return base.Channel.deleteEmployee(emp_name);
         }
         
-        public System.Threading.Tasks.Task<string> deleteEmployeeAsync(int emp_id) {
-            return base.Channel.deleteEmployeeAsync(emp_id);
+        public System.Threading.Tasks.Task<string> deleteEmployeeAsync(string emp_name) {
+            return base.Channel.deleteEmployeeAsync(emp_name);
         }
     }
 }

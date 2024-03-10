@@ -26,7 +26,6 @@
     <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="5d8825f8-ea14-4dcb-b640-47d76c6c8bb5" SourceId="1" SourceUrl="net.tcp://localhost:8000/empService/mex" />
     <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="ed82a469-392b-4546-9399-790e3138bf7b" SourceId="1" SourceUrl="net.tcp://localhost:8000/empService/mex" />
     <MetadataFile FileName="EMS.Models.xsd" MetadataType="Schema" ID="27acf583-a66c-40a8-983c-6e76c65b237b" SourceId="1" SourceUrl="net.tcp://localhost:8000/empService/mex" />
-    <MetadataFile FileName="EMS.xsd" MetadataType="Schema" ID="57f817f2-40c7-4ca8-a002-9582c7f8e6f6" SourceId="1" SourceUrl="net.tcp://localhost:8000/empService/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -25,9 +25,6 @@
             <br />
             <asp:Button ID="btnUpdateDept" runat="server" OnClick="btnUpdateDept_Click" OnClientClick="btnUpdateDept" Text="Update Department" />
             <br />
-            <br />
-            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-            <br />
         </div>
     </form>
 </body>
