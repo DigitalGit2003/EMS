@@ -83,6 +83,7 @@
     <Content Include="EmployeeViews\AddEmployee.aspx" />
     <Content Include="EmployeeViews\Styles.css" />
     <Content Include="EmployeeViews\UpdateEmployee.aspx" />
+    <Content Include="ProjectViews\AddEmployees.aspx" />
     <Content Include="ProjectViews\AddProject.aspx" />
     <Content Include="Connected Services\deptServiceRef\Client.deptServiceRef.DepartmentDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -111,6 +112,9 @@
     <Content Include="Connected Services\projServiceRef\Client.projServiceRef.ProjectDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <None Include="Connected Services\projServiceRef\Arrays.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\projServiceRef\configuration91.svcinfo" />
     <None Include="Connected Services\projServiceRef\configuration.svcinfo" />
     <None Include="Connected Services\projServiceRef\EMS.Models.xsd">
@@ -124,6 +128,7 @@
     <Content Include="DepartmentViews\UpdateDepartment.aspx" />
     <Content Include="ProjectViews\Styles.css" />
     <Content Include="ProjectViews\UpdateProject.aspx" />
+    <Content Include="ProjectViews\ViewEmployees.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -162,6 +167,13 @@
     <Compile Include="EmployeeViews\UpdateEmployee.aspx.designer.cs">
       <DependentUpon>UpdateEmployee.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ProjectViews\AddEmployees.aspx.cs">
+      <DependentUpon>AddEmployees.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProjectViews\AddEmployees.aspx.designer.cs">
+      <DependentUpon>AddEmployees.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ProjectViews\AddProject.aspx.cs">
       <DependentUpon>AddProject.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -197,6 +209,13 @@
     </Compile>
     <Compile Include="ProjectViews\UpdateProject.aspx.designer.cs">
       <DependentUpon>UpdateProject.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectViews\ViewEmployees.aspx.cs">
+      <DependentUpon>ViewEmployees.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProjectViews\ViewEmployees.aspx.designer.cs">
+      <DependentUpon>ViewEmployees.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DepartmentViews\UpdateDepartment.aspx.cs">

@@ -29,5 +29,13 @@ namespace EMS.Services
         [OperationContract]
         string deleteProject(string proj_title);
 
+        [OperationContract]
+        string addEmployees(string proj_title, List<string> Emps);
+
+        [OperationContract]
+        List<string> viewEmployees(string proj_title);
+
+        [OperationContract]
+        string removeEmployeeFromProject(string proj_title, string emp_name);
     }
 }

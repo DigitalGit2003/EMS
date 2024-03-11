@@ -34,6 +34,10 @@
                             &nbsp
         <asp:Button ID="btnDelete" runat="server" Text="Delete" CommandArgument='<%# Eval("Title") + "," + Container.DataItemIndex %>' ForeColor="Red" OnClick="btnDelete_Click" />
                             &nbsp
+        <asp:Button ID="btnAddEmployees" runat="server" Text="Add Employees" CommandArgument='<%# Eval("Title") + "," + Container.DataItemIndex %>' ForeColor="Black" OnClick="btnAddEmployees_Click" />
+                            &nbsp
+        <asp:Button ID="btnViewEmployees" runat="server" Text="View Employees" CommandArgument='<%# Eval("Title") + "," + Container.DataItemIndex %>' ForeColor="Green" OnClick="btnViewEmployees_Click" />
+                            &nbsp
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
