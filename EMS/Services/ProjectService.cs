@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace EMS.Services
 {
@@ -121,6 +122,94 @@ namespace EMS.Services
             return "Project deleted.";
         }
 
-        
+        public string addEmployees(string proj_title, List<string> emps)
+        {
+            using (var context = new EMSDbContext())
+            {
+                var project = context.Projects.FirstOrDefault(p => p.Title == proj_title);
+
+                if (project == null)
+                {
+                    return "Project not found";
+                }
+
+                // Find the employees by name and add them to the project
+                foreach (var empName in emps)
+                {
+                    var employee = context.Employees.FirstOrDefault(e => e.Name == empName);
+
+                    if (employee == null)
+                    {
+                        continue;
+                    }
+
+                    // Check if the employee is already associated with the project
+                    if (!project.Employees.Any(e => e.EmployeeId == employee.EmployeeId))
+                    {
+                        project.Employees.Add(employee);
+                    }
+                }
+
+                context.SaveChanges();
+            }
+
+            return "Employees added to project successfully";
+        }
+
+        public List<string> viewEmployees(string proj_title)
+        {
+            List<string> employeeNames = new List<string>();
+
+            using (var context = new EMSDbContext())
+            {
+                // Find the project by title including its associated employees
+                var project = context.Projects
+                                    .Include(p => p.Employees)
+                                    .FirstOrDefault(p => p.Title == proj_title);
+
+                if (project != null)
+                {
+                    // Extract employee names
+                    foreach (var employee in project.Employees)
+                    {
+                        employeeNames.Add(employee.Name);
+                    }
+                }
+            }
+
+            return employeeNames;
+        }
+
+        public string removeEmployeeFromProject(string proj_title, string emp_name)
+        {
+            using (var context = new EMSDbContext())
+            {
+                // Find the project by title including its associated employees
+                var project = context.Projects
+                                    .Include(p => p.Employees)
+                                    .FirstOrDefault(p => p.Title == proj_title);
+
+                if (project == null)
+                {
+                    return "Project not found";
+                }
+
+                // Find the employee by name
+                var employee = context.Employees.FirstOrDefault(e => e.Name == emp_name);
+
+                if (employee == null)
+                {
+                    return "Employee not found";
+                }
+
+                // Remove the employee from the project
+                project.Employees.Remove(employee);
+
+                context.SaveChanges();
+            }
+
+            return "Employee removed from project successfully";
+
+        }
     }
 }

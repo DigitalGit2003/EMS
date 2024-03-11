@@ -129,6 +129,24 @@ namespace Client.projServiceRef {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectService/deleteProject", ReplyAction="http://tempuri.org/IProjectService/deleteProjectResponse")]
         System.Threading.Tasks.Task<string> deleteProjectAsync(string proj_title);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectService/addEmployees", ReplyAction="http://tempuri.org/IProjectService/addEmployeesResponse")]
+        string addEmployees(string proj_title, string[] Emps);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectService/addEmployees", ReplyAction="http://tempuri.org/IProjectService/addEmployeesResponse")]
+        System.Threading.Tasks.Task<string> addEmployeesAsync(string proj_title, string[] Emps);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectService/viewEmployees", ReplyAction="http://tempuri.org/IProjectService/viewEmployeesResponse")]
+        string[] viewEmployees(string proj_title);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectService/viewEmployees", ReplyAction="http://tempuri.org/IProjectService/viewEmployeesResponse")]
+        System.Threading.Tasks.Task<string[]> viewEmployeesAsync(string proj_title);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectService/removeEmployeeFromProject", ReplyAction="http://tempuri.org/IProjectService/removeEmployeeFromProjectResponse")]
+        string removeEmployeeFromProject(string proj_title, string emp_name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectService/removeEmployeeFromProject", ReplyAction="http://tempuri.org/IProjectService/removeEmployeeFromProjectResponse")]
+        System.Threading.Tasks.Task<string> removeEmployeeFromProjectAsync(string proj_title, string emp_name);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -204,6 +222,30 @@ namespace Client.projServiceRef {
         
         public System.Threading.Tasks.Task<string> deleteProjectAsync(string proj_title) {
             return base.Channel.deleteProjectAsync(proj_title);
+        }
+        
+        public string addEmployees(string proj_title, string[] Emps) {
+            return base.Channel.addEmployees(proj_title, Emps);
+        }
+        
+        public System.Threading.Tasks.Task<string> addEmployeesAsync(string proj_title, string[] Emps) {
+            return base.Channel.addEmployeesAsync(proj_title, Emps);
+        }
+        
+        public string[] viewEmployees(string proj_title) {
+            return base.Channel.viewEmployees(proj_title);
+        }
+        
+        public System.Threading.Tasks.Task<string[]> viewEmployeesAsync(string proj_title) {
+            return base.Channel.viewEmployeesAsync(proj_title);
+        }
+        
+        public string removeEmployeeFromProject(string proj_title, string emp_name) {
+            return base.Channel.removeEmployeeFromProject(proj_title, emp_name);
+        }
+        
+        public System.Threading.Tasks.Task<string> removeEmployeeFromProjectAsync(string proj_title, string emp_name) {
+            return base.Channel.removeEmployeeFromProjectAsync(proj_title, emp_name);
         }
     }
 }
