@@ -32,11 +32,11 @@ namespace EMS.Services
         }
         // ----------------------------------------------------------------------
 
-        public EmployeeDTO getEmployee(string emp_name)
+        public EmployeeDTO getEmployee(int emp_id)
         {
             using (var context = new EMSDbContext())
             {
-                Employee emp = context.Employees.FirstOrDefault(ee => ee.Name == emp_name);
+                Employee emp = context.Employees.Find(emp_id);
                 EmployeeDTO result = convertToDTO(emp);
                 return result;
             }
@@ -58,13 +58,11 @@ namespace EMS.Services
             }
         }
 
-        public List<EmployeeDTO> getEmployeesByDepartmentName(string dept_name)
+        public List<EmployeeDTO> getEmployeesByDepartmentId(int dept_id)
         {
             using (var context = new EMSDbContext())
             {
-                Department dept = context.Departments.FirstOrDefault(d => d.Name == dept_name);
-
-                List<Employee> emps = context.Employees.Where(e => e.DepartmentId == dept.DepartmentId).ToList();
+                List<Employee> emps = context.Employees.Where(e => e.DepartmentId == dept_id).ToList();
                 List<EmployeeDTO> empDTOs = new List<EmployeeDTO>();
                 foreach (var emp in emps)
                 {
@@ -77,12 +75,12 @@ namespace EMS.Services
         }
         
         // ----------------------------------------------------------------------
-        public string addEmployee(EmployeeDTO dto, string deptName)
+        public string addEmployee(EmployeeDTO dto, int dept_id)
         { 
             using (var context = new EMSDbContext())
             {
                 Employee e = convertFromDTO(dto);
-                Department dept = context.Departments.FirstOrDefault(d => d.Name == deptName);
+                Department dept = context.Departments.Find(dept_id);
                 e.Department = dept;
                 context.Employees.Add(e);
                 context.SaveChanges();
@@ -90,11 +88,11 @@ namespace EMS.Services
             return "Employee added.";
         }
 
-        public string updateEmployee(string emp_name, EmployeeDTO e)
+        public string updateEmployee(int emp_id, EmployeeDTO e)
         {
             using (var context = new EMSDbContext())
             {
-                Employee emp = context.Employees.FirstOrDefault(ee => ee.Name == emp_name);
+                Employee emp = context.Employees.Find(emp_id);
                 emp.Name = e.Name;
                 emp.Salary = e.Salary;
                 context.SaveChanges();
@@ -103,11 +101,11 @@ namespace EMS.Services
             return "Employee updated.";
         }
 
-        public string deleteEmployee(string emp_name)
+        public string deleteEmployee(int emp_id)
         {
             using (var context = new EMSDbContext())
             {
-                var employeeToDelete = context.Employees.FirstOrDefault(e => e.Name == emp_name);
+                var employeeToDelete = context.Employees.Find(emp_id);
 
                 if (employeeToDelete != null)
                 {

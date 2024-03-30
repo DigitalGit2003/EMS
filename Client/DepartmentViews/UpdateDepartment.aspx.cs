@@ -14,12 +14,12 @@ namespace Client
         {
             if (!IsPostBack)
             {
-                if (Request.QueryString["deptName"] != null)
+                if (Request.QueryString["deptId"] != null)
                 {
-                    string dept_name = Request.QueryString["deptName"];
+                    string dept_id = Request.QueryString["deptId"];
                     
                     DepartmentServiceClient dc = new DepartmentServiceClient();
-                    DepartmentDTO dept = dc.getDepartment(dept_name);
+                    DepartmentDTO dept = dc.getDepartment(int.Parse(dept_id));
 
 
                     // Populate the textboxes with existing department details
@@ -31,7 +31,7 @@ namespace Client
 
         protected void btnUpdateDept_Click(object sender, EventArgs e)
         {
-            string deptName = Request.QueryString["deptName"];
+            string dept_id = Request.QueryString["deptId"];
 
             string name = tbName.Text;
             string location = tbLocation.Text;
@@ -41,7 +41,7 @@ namespace Client
             deptDTO.Location = location;
 
             DepartmentServiceClient dc = new DepartmentServiceClient();
-            string s = dc.updateDepartment(deptName, deptDTO);
+            string s = dc.updateDepartment(int.Parse(dept_id), deptDTO);
 
             Response.Redirect("DisplayDepartments.aspx");
         }

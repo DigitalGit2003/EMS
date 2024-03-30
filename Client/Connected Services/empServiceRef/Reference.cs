@@ -95,10 +95,10 @@ namespace Client.empServiceRef {
     public interface IEmployeeService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmployeeService/getEmployee", ReplyAction="http://tempuri.org/IEmployeeService/getEmployeeResponse")]
-        Client.empServiceRef.EmployeeDTO getEmployee(string emp_name);
+        Client.empServiceRef.EmployeeDTO getEmployee(int emp_id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmployeeService/getEmployee", ReplyAction="http://tempuri.org/IEmployeeService/getEmployeeResponse")]
-        System.Threading.Tasks.Task<Client.empServiceRef.EmployeeDTO> getEmployeeAsync(string emp_name);
+        System.Threading.Tasks.Task<Client.empServiceRef.EmployeeDTO> getEmployeeAsync(int emp_id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmployeeService/getEmployees", ReplyAction="http://tempuri.org/IEmployeeService/getEmployeesResponse")]
         Client.empServiceRef.EmployeeDTO[] getEmployees();
@@ -106,29 +106,29 @@ namespace Client.empServiceRef {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmployeeService/getEmployees", ReplyAction="http://tempuri.org/IEmployeeService/getEmployeesResponse")]
         System.Threading.Tasks.Task<Client.empServiceRef.EmployeeDTO[]> getEmployeesAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmployeeService/getEmployeesByDepartmentName", ReplyAction="http://tempuri.org/IEmployeeService/getEmployeesByDepartmentNameResponse")]
-        Client.empServiceRef.EmployeeDTO[] getEmployeesByDepartmentName(string dept_name);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmployeeService/getEmployeesByDepartmentId", ReplyAction="http://tempuri.org/IEmployeeService/getEmployeesByDepartmentIdResponse")]
+        Client.empServiceRef.EmployeeDTO[] getEmployeesByDepartmentId(int dept_id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmployeeService/getEmployeesByDepartmentName", ReplyAction="http://tempuri.org/IEmployeeService/getEmployeesByDepartmentNameResponse")]
-        System.Threading.Tasks.Task<Client.empServiceRef.EmployeeDTO[]> getEmployeesByDepartmentNameAsync(string dept_name);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmployeeService/addEmployee", ReplyAction="http://tempuri.org/IEmployeeService/addEmployeeResponse")]
-        string addEmployee(Client.empServiceRef.EmployeeDTO dto, string deptName);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmployeeService/getEmployeesByDepartmentId", ReplyAction="http://tempuri.org/IEmployeeService/getEmployeesByDepartmentIdResponse")]
+        System.Threading.Tasks.Task<Client.empServiceRef.EmployeeDTO[]> getEmployeesByDepartmentIdAsync(int dept_id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmployeeService/addEmployee", ReplyAction="http://tempuri.org/IEmployeeService/addEmployeeResponse")]
-        System.Threading.Tasks.Task<string> addEmployeeAsync(Client.empServiceRef.EmployeeDTO dto, string deptName);
+        string addEmployee(Client.empServiceRef.EmployeeDTO dto, int dept_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmployeeService/addEmployee", ReplyAction="http://tempuri.org/IEmployeeService/addEmployeeResponse")]
+        System.Threading.Tasks.Task<string> addEmployeeAsync(Client.empServiceRef.EmployeeDTO dto, int dept_id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmployeeService/updateEmployee", ReplyAction="http://tempuri.org/IEmployeeService/updateEmployeeResponse")]
-        string updateEmployee(string emp_name, Client.empServiceRef.EmployeeDTO e);
+        string updateEmployee(int emp_id, Client.empServiceRef.EmployeeDTO e);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmployeeService/updateEmployee", ReplyAction="http://tempuri.org/IEmployeeService/updateEmployeeResponse")]
-        System.Threading.Tasks.Task<string> updateEmployeeAsync(string emp_name, Client.empServiceRef.EmployeeDTO e);
+        System.Threading.Tasks.Task<string> updateEmployeeAsync(int emp_id, Client.empServiceRef.EmployeeDTO e);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmployeeService/deleteEmployee", ReplyAction="http://tempuri.org/IEmployeeService/deleteEmployeeResponse")]
-        string deleteEmployee(string emp_name);
+        string deleteEmployee(int emp_id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmployeeService/deleteEmployee", ReplyAction="http://tempuri.org/IEmployeeService/deleteEmployeeResponse")]
-        System.Threading.Tasks.Task<string> deleteEmployeeAsync(string emp_name);
+        System.Threading.Tasks.Task<string> deleteEmployeeAsync(int emp_id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -158,12 +158,12 @@ namespace Client.empServiceRef {
                 base(binding, remoteAddress) {
         }
         
-        public Client.empServiceRef.EmployeeDTO getEmployee(string emp_name) {
-            return base.Channel.getEmployee(emp_name);
+        public Client.empServiceRef.EmployeeDTO getEmployee(int emp_id) {
+            return base.Channel.getEmployee(emp_id);
         }
         
-        public System.Threading.Tasks.Task<Client.empServiceRef.EmployeeDTO> getEmployeeAsync(string emp_name) {
-            return base.Channel.getEmployeeAsync(emp_name);
+        public System.Threading.Tasks.Task<Client.empServiceRef.EmployeeDTO> getEmployeeAsync(int emp_id) {
+            return base.Channel.getEmployeeAsync(emp_id);
         }
         
         public Client.empServiceRef.EmployeeDTO[] getEmployees() {
@@ -174,36 +174,36 @@ namespace Client.empServiceRef {
             return base.Channel.getEmployeesAsync();
         }
         
-        public Client.empServiceRef.EmployeeDTO[] getEmployeesByDepartmentName(string dept_name) {
-            return base.Channel.getEmployeesByDepartmentName(dept_name);
+        public Client.empServiceRef.EmployeeDTO[] getEmployeesByDepartmentId(int dept_id) {
+            return base.Channel.getEmployeesByDepartmentId(dept_id);
         }
         
-        public System.Threading.Tasks.Task<Client.empServiceRef.EmployeeDTO[]> getEmployeesByDepartmentNameAsync(string dept_name) {
-            return base.Channel.getEmployeesByDepartmentNameAsync(dept_name);
+        public System.Threading.Tasks.Task<Client.empServiceRef.EmployeeDTO[]> getEmployeesByDepartmentIdAsync(int dept_id) {
+            return base.Channel.getEmployeesByDepartmentIdAsync(dept_id);
         }
         
-        public string addEmployee(Client.empServiceRef.EmployeeDTO dto, string deptName) {
-            return base.Channel.addEmployee(dto, deptName);
+        public string addEmployee(Client.empServiceRef.EmployeeDTO dto, int dept_id) {
+            return base.Channel.addEmployee(dto, dept_id);
         }
         
-        public System.Threading.Tasks.Task<string> addEmployeeAsync(Client.empServiceRef.EmployeeDTO dto, string deptName) {
-            return base.Channel.addEmployeeAsync(dto, deptName);
+        public System.Threading.Tasks.Task<string> addEmployeeAsync(Client.empServiceRef.EmployeeDTO dto, int dept_id) {
+            return base.Channel.addEmployeeAsync(dto, dept_id);
         }
         
-        public string updateEmployee(string emp_name, Client.empServiceRef.EmployeeDTO e) {
-            return base.Channel.updateEmployee(emp_name, e);
+        public string updateEmployee(int emp_id, Client.empServiceRef.EmployeeDTO e) {
+            return base.Channel.updateEmployee(emp_id, e);
         }
         
-        public System.Threading.Tasks.Task<string> updateEmployeeAsync(string emp_name, Client.empServiceRef.EmployeeDTO e) {
-            return base.Channel.updateEmployeeAsync(emp_name, e);
+        public System.Threading.Tasks.Task<string> updateEmployeeAsync(int emp_id, Client.empServiceRef.EmployeeDTO e) {
+            return base.Channel.updateEmployeeAsync(emp_id, e);
         }
         
-        public string deleteEmployee(string emp_name) {
-            return base.Channel.deleteEmployee(emp_name);
+        public string deleteEmployee(int emp_id) {
+            return base.Channel.deleteEmployee(emp_id);
         }
         
-        public System.Threading.Tasks.Task<string> deleteEmployeeAsync(string emp_name) {
-            return base.Channel.deleteEmployeeAsync(emp_name);
+        public System.Threading.Tasks.Task<string> deleteEmployeeAsync(int emp_id) {
+            return base.Channel.deleteEmployeeAsync(emp_id);
         }
     }
 }

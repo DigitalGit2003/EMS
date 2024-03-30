@@ -11,10 +11,10 @@
     <form id="form1" runat="server">
         <div class="navbar">
             <%
-                string dept_name = Request.QueryString["deptName"];
+                string dept_id = Request.QueryString["deptId"];
             %>
-            <a href="/ProjectViews/AddProject.aspx?deptName=<%= Server.UrlEncode(dept_name) %>">Add Project</a>
-            <a href="/DepartmentViews/DepartmentProjects.aspx?deptName=<%= Server.UrlEncode(dept_name) %>">Display Projects</a>
+            <a href="/ProjectViews/AddProject.aspx?deptId=<%= Server.UrlEncode(dept_id) %>">Add Project</a>
+            <a href="/DepartmentViews/DepartmentProjects.aspx?deptId=<%= Server.UrlEncode(dept_id) %>">Display Projects</a>
             <a href="/DepartmentViews/DisplayDepartments.aspx">Back</a>
         </div>
 

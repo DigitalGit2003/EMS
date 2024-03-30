@@ -23,23 +23,24 @@ namespace Client.DepartmentViews
 
         private void PopulateGridView()
         {
-            if (Request.QueryString["deptName"] != null)
+            if (Request.QueryString["deptId"] != null)
             {
-                string dept_name = Request.QueryString["deptName"];
-                lblDeptProjects.Text = "Projects of " + dept_name + " Department.";
+                string dept_id = Request.QueryString["deptId"];
+                lblDeptProjects.Text = "Projects of " + dept_id + " Department.";
 
-                // get Projects by deptName
+                // get Projects by deptId
                 ProjectServiceClient pc = new ProjectServiceClient();
-                List<ProjectDTO> deptProjects = pc.getProjectsByDepartmentName(dept_name).ToList();
+                List<ProjectDTO> deptProjects = pc.getProjectsByDepartmentId(int.Parse(dept_id)).ToList();
 
                 if (deptProjects.Count == 0)
                 {
-                    lblDeptProjects.Text = "No Projects are there in " + dept_name + " Department Currently.";
+                    lblDeptProjects.Text = "No Projects are there in " + dept_id + " Department Currently.";
                     return;
                 }
 
                 // Create a DataTable
                 DataTable dtDeptProjects = new DataTable();
+                dtDeptProjects.Columns.Add("ProjId");
                 dtDeptProjects.Columns.Add("Title");
                 dtDeptProjects.Columns.Add("Status");
 
@@ -47,6 +48,7 @@ namespace Client.DepartmentViews
                 foreach (var deptProject in deptProjects)
                 {
                     DataRow dr = dtDeptProjects.NewRow();
+                    dr["ProjId"] = deptProject.ProjectId;
                     dr["Title"] = deptProject.Title;
                     dr["Status"] = deptProject.Status;
                     dtDeptProjects.Rows.Add(dr);
@@ -67,20 +69,20 @@ namespace Client.DepartmentViews
             string commandArgument = btnDelete.CommandArgument;
             string[] args = commandArgument.Split(',');
 
-            string proj_title = args[0];
+            string proj_id = args[0];
             int rowIndex = Convert.ToInt32(args[1]);
 
             ProjectServiceClient pc = new ProjectServiceClient();
-            string s = pc.deleteProject(proj_title);
+            string s = pc.deleteProject(int.Parse(proj_id));
 
             PopulateGridView();
-            Label1.Text = proj_title + s;
+            Label1.Text = proj_id + s;
             Label1.ForeColor = System.Drawing.Color.Red;
         }
 
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
-            string dept_name = Request.QueryString["deptName"];
+            string dept_id = Request.QueryString["deptId"];
 
             Button btnUpdate = (Button)sender;
             GridViewRow row = (GridViewRow)btnUpdate.NamingContainer;
@@ -88,15 +90,15 @@ namespace Client.DepartmentViews
             string commandArgument = btnUpdate.CommandArgument;
             string[] args = commandArgument.Split(',');
 
-            string proj_title = args[0];
+            string proj_id = args[0];
             int rowIndex = Convert.ToInt32(args[1]);
 
-            Response.Redirect("/ProjectViews/UpdateProject.aspx?projTitle=" + Server.UrlEncode(proj_title) + "&deptName=" + Server.UrlEncode(dept_name));
+            Response.Redirect("/ProjectViews/UpdateProject.aspx?projId=" + Server.UrlEncode(proj_id) + "&deptId=" + Server.UrlEncode(dept_id));
         }
 
         protected void btnAddEmployees_Click(object sender, EventArgs e)
         {
-            string dept_name = Request.QueryString["deptName"];
+            string dept_id = Request.QueryString["deptId"];
 
             Button btnAddEmployees = (Button)sender;
             GridViewRow row = (GridViewRow)btnAddEmployees.NamingContainer;
@@ -104,15 +106,15 @@ namespace Client.DepartmentViews
             string commandArgument = btnAddEmployees.CommandArgument;
             string[] args = commandArgument.Split(',');
 
-            string proj_title = args[0];
+            string proj_id = args[0];
             int rowIndex = Convert.ToInt32(args[1]);
 
-            Response.Redirect("/ProjectViews/AddEmployees.aspx?projTitle=" + Server.UrlEncode(proj_title) + "&deptName=" + Server.UrlEncode(dept_name));
+            Response.Redirect("/ProjectViews/AddEmployees.aspx?projId=" + Server.UrlEncode(proj_id) + "&deptId=" + Server.UrlEncode(dept_id));
         }
 
         protected void btnViewEmployees_Click(object sender, EventArgs e)
         {
-            string dept_name = Request.QueryString["deptName"];
+            string dept_id = Request.QueryString["deptId"];
 
             Button btnViewEmployees = (Button)sender;
             GridViewRow row = (GridViewRow)btnViewEmployees.NamingContainer;
@@ -120,10 +122,10 @@ namespace Client.DepartmentViews
             string commandArgument = btnViewEmployees.CommandArgument;
             string[] args = commandArgument.Split(',');
 
-            string proj_title = args[0];
+            string proj_id = args[0];
             int rowIndex = Convert.ToInt32(args[1]);
 
-            Response.Redirect("/ProjectViews/ViewEmployees.aspx?projTitle=" + Server.UrlEncode(proj_title) + "&deptName=" + Server.UrlEncode(dept_name));
+            Response.Redirect("/ProjectViews/ViewEmployees.aspx?projId=" + Server.UrlEncode(proj_id) + "&deptId=" + Server.UrlEncode(dept_id));
         }
     }
 }

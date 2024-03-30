@@ -14,4 +14,18 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfProjectDTO" nillable="true" type="tns:ArrayOfProjectDTO" />
+  <xs:complexType name="ArrayOfEmployeeDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EmployeeDTO" nillable="true" type="tns:EmployeeDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEmployeeDTO" nillable="true" type="tns:ArrayOfEmployeeDTO" />
+  <xs:complexType name="EmployeeDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EmployeeId" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Salary" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EmployeeDTO" nillable="true" type="tns:EmployeeDTO" />
 </xs:schema>

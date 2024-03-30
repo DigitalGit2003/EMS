@@ -4,7 +4,7 @@
   <xs:element name="getEmployee">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="emp_name" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="emp_id" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -27,17 +27,17 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="getEmployeesByDepartmentName">
+  <xs:element name="getEmployeesByDepartmentId">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="dept_name" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="dept_id" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="getEmployeesByDepartmentNameResponse">
+  <xs:element name="getEmployeesByDepartmentIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/EMS.Models" minOccurs="0" name="getEmployeesByDepartmentNameResult" nillable="true" type="q3:ArrayOfEmployeeDTO" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/EMS.Models" minOccurs="0" name="getEmployeesByDepartmentIdResult" nillable="true" type="q3:ArrayOfEmployeeDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -45,7 +45,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/EMS.Models" minOccurs="0" name="dto" nillable="true" type="q4:EmployeeDTO" />
-        <xs:element minOccurs="0" name="deptName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="dept_id" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -59,7 +59,7 @@
   <xs:element name="updateEmployee">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="emp_name" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="emp_id" type="xs:int" />
         <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/EMS.Models" minOccurs="0" name="e" nillable="true" type="q5:EmployeeDTO" />
       </xs:sequence>
     </xs:complexType>
@@ -74,7 +74,7 @@
   <xs:element name="deleteEmployee">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="emp_name" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="emp_id" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

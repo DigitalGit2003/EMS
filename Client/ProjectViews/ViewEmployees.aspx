@@ -19,7 +19,7 @@
                     <asp:TemplateField HeaderText="Actions">
                         <ItemTemplate>
                             &nbsp
-                <asp:Button ID="btnRemove" runat="server" Text="Remove" CommandArgument='<%# Eval("Name") + "," + Container.DataItemIndex %>' ForeColor="Red" OnClick="btnRemove_Click" />
+                <asp:Button ID="btnRemove" runat="server" Text="Remove" CommandArgument='<%# Eval("EmpId") + "," + Container.DataItemIndex %>' ForeColor="Red" OnClick="btnRemove_Click" />
                             &nbsp
                         </ItemTemplate>
                     </asp:TemplateField>

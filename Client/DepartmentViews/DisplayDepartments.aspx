@@ -22,13 +22,13 @@
                     <asp:TemplateField HeaderText="Actions">
                         <ItemTemplate>
                             &nbsp
-                            <asp:Button ID="btnUpdate" runat="server" Text="Update" CommandArgument='<%# Eval("Name") + "," + Container.DataItemIndex %>' ForeColor="Blue" OnClick="btnUpdate_Click" />
+                            <asp:Button ID="btnUpdate" runat="server" Text="Update" CommandArgument='<%# Eval("DeptId") + "," + Container.DataItemIndex %>' ForeColor="Blue" OnClick="btnUpdate_Click" />
                             &nbsp
-                            <asp:Button ID="btnDelete" runat="server" Text="Delete" CommandArgument='<%# Eval("Name") + "," + Container.DataItemIndex %>' ForeColor="Red" OnClick="btnDelete_Click" />
+                            <asp:Button ID="btnDelete" runat="server" Text="Delete" CommandArgument='<%# Eval("DeptId") + "," + Container.DataItemIndex %>' ForeColor="Red" OnClick="btnDelete_Click" />
                             &nbsp
-                            <asp:Button ID="btnDeptEmployees" runat="server" Text="Employees" CommandArgument='<%# Eval("Name") + "," + Container.DataItemIndex %>' ForeColor="Green" OnClick="btnDeptEmployees_Click" />
+                            <asp:Button ID="btnDeptEmployees" runat="server" Text="Employees" CommandArgument='<%# Eval("DeptId") + "," + Container.DataItemIndex %>' ForeColor="Green" OnClick="btnDeptEmployees_Click" />
                             &nbsp
-                            <asp:Button ID="btnDeptProjects" runat="server" Text="Projects" CommandArgument='<%# Eval("Name") + "," + Container.DataItemIndex %>' ForeColor="Black" OnClick="btnDeptProjects_Click" />
+                            <asp:Button ID="btnDeptProjects" runat="server" Text="Projects" CommandArgument='<%# Eval("DeptId") + "," + Container.DataItemIndex %>' ForeColor="Black" OnClick="btnDeptProjects_Click" />
                             &nbsp
                         </ItemTemplate>
                     </asp:TemplateField>

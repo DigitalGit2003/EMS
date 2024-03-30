@@ -26,6 +26,7 @@ namespace Client
             
             // Create a DataTable
             DataTable dtDepartments = new DataTable();
+            dtDepartments.Columns.Add("DeptId");
             dtDepartments.Columns.Add("Name");
             dtDepartments.Columns.Add("Location");
 
@@ -33,6 +34,7 @@ namespace Client
             foreach (var dept in depts)
             {
                 DataRow dr = dtDepartments.NewRow();
+                dr["DeptId"] = dept.DepartmentId;
                 dr["Name"] = dept.Name;
                 dr["Location"] = dept.Location;
                 dtDepartments.Rows.Add(dr);
@@ -52,14 +54,14 @@ namespace Client
             string commandArgument = btnDelete.CommandArgument;
             string[] args = commandArgument.Split(',');
 
-            string dept_name = args[0];
+            string dept_id = args[0];
             int rowIndex = Convert.ToInt32(args[1]);
 
             DepartmentServiceClient dc = new DepartmentServiceClient();
-            string s = dc.deleteDepartment(dept_name);
+            string s = dc.deleteDepartment(int.Parse(dept_id));
 
             PopulateGridView();
-            Label1.Text = dept_name + s;
+            Label1.Text = dept_id;
             Label1.ForeColor = System.Drawing.Color.Red;
         }
 
@@ -71,10 +73,10 @@ namespace Client
             string commandArgument = btnUpdate.CommandArgument;
             string[] args = commandArgument.Split(',');
 
-            string dept_name = args[0];
+            string dept_id = args[0];
             int rowIndex = Convert.ToInt32(args[1]);
 
-            Response.Redirect("UpdateDepartment.aspx?deptName=" + Server.UrlEncode(dept_name));
+            Response.Redirect("UpdateDepartment.aspx?deptId=" + Server.UrlEncode(dept_id));
         }
 
         protected void btnDeptEmployees_Click(object sender, EventArgs e)
@@ -85,10 +87,10 @@ namespace Client
             string commandArgument = btnDelete.CommandArgument;
             string[] args = commandArgument.Split(',');
 
-            string dept_name = args[0];
+            string dept_id = args[0];
             int rowIndex = Convert.ToInt32(args[1]);
 
-            Response.Redirect("DepartmentEmployees.aspx?deptName=" + Server.UrlEncode(dept_name));
+            Response.Redirect("DepartmentEmployees.aspx?deptId=" + Server.UrlEncode(dept_id));
         }
 
         protected void btnDeptProjects_Click(object sender, EventArgs e)
@@ -99,10 +101,10 @@ namespace Client
             string commandArgument = btnDelete.CommandArgument;
             string[] args = commandArgument.Split(',');
 
-            string dept_name = args[0];
+            string dept_id = args[0];
             int rowIndex = Convert.ToInt32(args[1]);
 
-            Response.Redirect("DepartmentProjects.aspx?deptName=" + Server.UrlEncode(dept_name));
+            Response.Redirect("DepartmentProjects.aspx?deptId=" + Server.UrlEncode(dept_id));
         }
     }
 }

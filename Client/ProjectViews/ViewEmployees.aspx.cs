@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using EmployeeDTO = Client.projServiceRef.EmployeeDTO;
 
 namespace Client.ProjectViews
 {
@@ -22,27 +23,29 @@ namespace Client.ProjectViews
 
         private void PopulateGridView()
         {
-            string proj_title = Request.QueryString["projTitle"];
-            lblViewEmployees.Text = "Employees for " + proj_title + " Project.";
+            string proj_id = Request.QueryString["projId"];
+            lblViewEmployees.Text = "Employees for " + proj_id + " Project.";
 
             ProjectServiceClient pc = new ProjectServiceClient();
-            List<string> projEmployees = pc.viewEmployees(proj_title).ToList();
+            List<EmployeeDTO> projEmployees = pc.viewEmployees(int.Parse(proj_id)).ToList();
 
             if (projEmployees.Count == 0)
             {
-                lblViewEmployees.Text = "Employees are working for " + proj_title + " Project Currently.";
+                lblViewEmployees.Text = "Employees are working for " + proj_id + " Project Currently.";
                 return;
             }
 
             // Create a DataTable
             DataTable dtProjEmployees = new DataTable();
+            dtProjEmployees.Columns.Add("EmpId");
             dtProjEmployees.Columns.Add("Name");
 
             // Add rows to the DataTable
             foreach (var projEmployee in projEmployees)
             {
                 DataRow dr = dtProjEmployees.NewRow();
-                dr["Name"] = projEmployee;
+                dr["EmpId"] = projEmployee.EmployeeId;
+                dr["Name"] = projEmployee.Name;
                 dtProjEmployees.Rows.Add(dr);
             }
 
@@ -53,7 +56,7 @@ namespace Client.ProjectViews
 
         protected void btnRemove_Click(object sender, EventArgs e)
         {
-            string proj_title = Request.QueryString["projTitle"];
+            string proj_id = Request.QueryString["projId"];
 
             Button btnUpdate = (Button)sender;
             GridViewRow row = (GridViewRow)btnUpdate.NamingContainer;
@@ -61,12 +64,12 @@ namespace Client.ProjectViews
             string commandArgument = btnUpdate.CommandArgument;
             string[] args = commandArgument.Split(',');
 
-            string emp_name = args[0];
+            string emp_id = args[0];
             int rowIndex = Convert.ToInt32(args[1]);
 
-            // write action method to remove emp_name from ProjectEmployees table...
+            // write action method to remove emp_id from ProjectEmployees table...
             ProjectServiceClient pc = new ProjectServiceClient();
-            string s = pc.removeEmployeeFromProject(proj_title, emp_name);
+            string s = pc.removeEmployeeFromProject(int.Parse(proj_id), int.Parse(emp_id));
 
             Label1.Text = s;
             Label1.ForeColor = System.Drawing.Color.Red;
@@ -74,8 +77,8 @@ namespace Client.ProjectViews
 
         protected void btnBack_Click(object sender, EventArgs e)
         {
-            string dept_name = Request.QueryString["deptName"];
-            Response.Redirect("/DepartmentViews/DepartmentProjects.aspx?deptName=" + Server.UrlEncode(dept_name));
+            string dept_id = Request.QueryString["deptId"];
+            Response.Redirect("/DepartmentViews/DepartmentProjects.aspx?deptId=" + Server.UrlEncode(dept_id));
         }
     }
 }
