@@ -4,7 +4,7 @@
   <xs:element name="getDepartment">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="dept_name" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="dept_id" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -44,7 +44,7 @@
   <xs:element name="updateDepartment">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="dept_name" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="dept_id" type="xs:int" />
         <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/EMS.Models" minOccurs="0" name="d" nillable="true" type="q4:DepartmentDTO" />
       </xs:sequence>
     </xs:complexType>
@@ -59,7 +59,7 @@
   <xs:element name="deleteDepartment">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="dept_name" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="dept_id" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

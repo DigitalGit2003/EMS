@@ -12,30 +12,30 @@ namespace EMS.Services
     public interface IProjectService
     {
         [OperationContract]
-        ProjectDTO getProject(string proj_title);
+        ProjectDTO getProject(int proj_id);
 
         [OperationContract]
         List<ProjectDTO> getProjects();
 
         [OperationContract]
-        List<ProjectDTO> getProjectsByDepartmentName(string dept_name);
+        List<ProjectDTO> getProjectsByDepartmentId(int dept_id);
 
         [OperationContract]
-        string addProject(ProjectDTO dto, string deptName);
+        string addProject(ProjectDTO dto, int dept_id);
 
         [OperationContract]
-        string updateProject(string proj_title, ProjectDTO p);
+        string updateProject(int proj_id, ProjectDTO p);
 
         [OperationContract]
-        string deleteProject(string proj_title);
+        string deleteProject(int proj_id);
 
         [OperationContract]
-        string addEmployees(string proj_title, List<string> Emps);
+        string addEmployees(int proj_id, List<string> Emps);
 
         [OperationContract]
-        List<string> viewEmployees(string proj_title);
+        List<EmployeeDTO> viewEmployees(int proj_id);
 
         [OperationContract]
-        string removeEmployeeFromProject(string proj_title, string emp_name);
+        string removeEmployeeFromProject(int proj_id, int emp_id);
     }
 }

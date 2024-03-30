@@ -12,7 +12,7 @@ namespace EMS.Services
     public interface IDepartmentService
     {
         [OperationContract]
-        DepartmentDTO getDepartment(string dept_name);
+        DepartmentDTO getDepartment(int dept_id);
 
         [OperationContract]
         List<DepartmentDTO> getDepartments();
@@ -21,10 +21,10 @@ namespace EMS.Services
         string addDepartment(DepartmentDTO d);
 
         [OperationContract]
-        string updateDepartment(string dept_name, DepartmentDTO d);
+        string updateDepartment(int dept_id, DepartmentDTO d);
 
         [OperationContract]
-        string deleteDepartment(string dept_name);
+        string deleteDepartment(int dept_id);
 
     }
 }

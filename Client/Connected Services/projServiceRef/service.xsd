@@ -5,7 +5,7 @@
   <xs:element name="getProject">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="proj_title" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="proj_id" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -28,17 +28,17 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="getProjectsByDepartmentName">
+  <xs:element name="getProjectsByDepartmentId">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="dept_name" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="dept_id" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="getProjectsByDepartmentNameResponse">
+  <xs:element name="getProjectsByDepartmentIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/EMS.Models" minOccurs="0" name="getProjectsByDepartmentNameResult" nillable="true" type="q3:ArrayOfProjectDTO" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/EMS.Models" minOccurs="0" name="getProjectsByDepartmentIdResult" nillable="true" type="q3:ArrayOfProjectDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -46,7 +46,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/EMS.Models" minOccurs="0" name="dto" nillable="true" type="q4:ProjectDTO" />
-        <xs:element minOccurs="0" name="deptName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="dept_id" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -60,7 +60,7 @@
   <xs:element name="updateProject">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="proj_title" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="proj_id" type="xs:int" />
         <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/EMS.Models" minOccurs="0" name="p" nillable="true" type="q5:ProjectDTO" />
       </xs:sequence>
     </xs:complexType>
@@ -75,7 +75,7 @@
   <xs:element name="deleteProject">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="proj_title" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="proj_id" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -89,7 +89,7 @@
   <xs:element name="addEmployees">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="proj_title" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="proj_id" type="xs:int" />
         <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Emps" nillable="true" type="q6:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
@@ -104,22 +104,22 @@
   <xs:element name="viewEmployees">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="proj_title" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="proj_id" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="viewEmployeesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="viewEmployeesResult" nillable="true" type="q7:ArrayOfstring" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/EMS.Models" minOccurs="0" name="viewEmployeesResult" nillable="true" type="q7:ArrayOfEmployeeDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="removeEmployeeFromProject">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="proj_title" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="emp_name" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="proj_id" type="xs:int" />
+        <xs:element minOccurs="0" name="emp_id" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

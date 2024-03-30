@@ -14,12 +14,12 @@ namespace Client.EmployeeViews
         {
             if (!IsPostBack)
             {
-                if (Request.QueryString["empName"] != null)
+                if (Request.QueryString["empId"] != null)
                 {
-                    string emp_name = Request.QueryString["empName"];
+                    string emp_id = Request.QueryString["empId"];
 
                     EmployeeServiceClient ec = new EmployeeServiceClient();
-                    EmployeeDTO emp = ec.getEmployee(emp_name);
+                    EmployeeDTO emp = ec.getEmployee(int.Parse(emp_id));
 
 
                     // Populate the textboxes with existing department details
@@ -31,8 +31,8 @@ namespace Client.EmployeeViews
 
         protected void btnUpdateEmp_Click(object sender, EventArgs e)
         {
-            string empName = Request.QueryString["empName"];
-            string deptName = Request.QueryString["deptName"];
+            string emp_id = Request.QueryString["empId"];
+            string dept_id = Request.QueryString["deptId"];
 
 
             string name = tbName.Text;
@@ -43,9 +43,9 @@ namespace Client.EmployeeViews
             empDTO.Salary = salary;
 
             EmployeeServiceClient ec = new EmployeeServiceClient();
-            string s = ec.updateEmployee(empName, empDTO);
+            string s = ec.updateEmployee(int.Parse(emp_id), empDTO);
 
-            Response.Redirect("/DepartmentViews/DepartmentEmployees.aspx?deptName=" + Server.UrlEncode(deptName));  // needs to be changed... --> dept_name as query string param
+            Response.Redirect("/DepartmentViews/DepartmentEmployees.aspx?deptId=" + Server.UrlEncode(dept_id));
         }
     }
 }

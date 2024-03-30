@@ -30,11 +30,11 @@ namespace EMS.Services
         }
         // ----------------------------------------------------------------------
 
-        public DepartmentDTO getDepartment(string dept_name)
+        public DepartmentDTO getDepartment(int dept_id)
         {
             using (var context = new EMSDbContext())
             {
-                Department dept = context.Departments.FirstOrDefault(d => d.Name == dept_name);
+                Department dept = context.Departments.Find(dept_id);
                 DepartmentDTO result = convertToDTO(dept);
                 return result;
             }
@@ -68,11 +68,11 @@ namespace EMS.Services
             return $"Department {dto.Name} is added.";
         }
 
-        public string updateDepartment(string dept_name, DepartmentDTO d)
+        public string updateDepartment(int dept_id, DepartmentDTO d)
         {
             using (var context = new EMSDbContext())
             {
-                Department dept = context.Departments.FirstOrDefault(de => de.Name == dept_name);
+                Department dept = context.Departments.Find(dept_id);
                 dept.Name = d.Name;
                 dept.Location = d.Location;
                 context.SaveChanges();
@@ -81,11 +81,11 @@ namespace EMS.Services
             return "Department updated.";
         }
 
-        public string deleteDepartment(string dept_name)
+        public string deleteDepartment(int dept_id)
         {
             using (var context = new EMSDbContext())
             {
-                var departmentToDelete = context.Departments.FirstOrDefault(d => d.Name == dept_name);
+                var departmentToDelete = context.Departments.Find(dept_id);
 
                 if (departmentToDelete != null)
                 {

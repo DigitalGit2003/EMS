@@ -53,11 +53,11 @@
   <wsdl:message name="IProjectService_getProjects_OutputMessage">
     <wsdl:part name="parameters" element="tns:getProjectsResponse" />
   </wsdl:message>
-  <wsdl:message name="IProjectService_getProjectsByDepartmentName_InputMessage">
-    <wsdl:part name="parameters" element="tns:getProjectsByDepartmentName" />
+  <wsdl:message name="IProjectService_getProjectsByDepartmentId_InputMessage">
+    <wsdl:part name="parameters" element="tns:getProjectsByDepartmentId" />
   </wsdl:message>
-  <wsdl:message name="IProjectService_getProjectsByDepartmentName_OutputMessage">
-    <wsdl:part name="parameters" element="tns:getProjectsByDepartmentNameResponse" />
+  <wsdl:message name="IProjectService_getProjectsByDepartmentId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getProjectsByDepartmentIdResponse" />
   </wsdl:message>
   <wsdl:message name="IProjectService_addProject_InputMessage">
     <wsdl:part name="parameters" element="tns:addProject" />
@@ -104,9 +104,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IProjectService/getProjects" message="tns:IProjectService_getProjects_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProjectService/getProjectsResponse" message="tns:IProjectService_getProjects_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="getProjectsByDepartmentName">
-      <wsdl:input wsaw:Action="http://tempuri.org/IProjectService/getProjectsByDepartmentName" message="tns:IProjectService_getProjectsByDepartmentName_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IProjectService/getProjectsByDepartmentNameResponse" message="tns:IProjectService_getProjectsByDepartmentName_OutputMessage" />
+    <wsdl:operation name="getProjectsByDepartmentId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProjectService/getProjectsByDepartmentId" message="tns:IProjectService_getProjectsByDepartmentId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProjectService/getProjectsByDepartmentIdResponse" message="tns:IProjectService_getProjectsByDepartmentId_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="addProject">
       <wsdl:input wsaw:Action="http://tempuri.org/IProjectService/addProject" message="tns:IProjectService_addProject_InputMessage" />
@@ -155,8 +155,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="getProjectsByDepartmentName">
-      <soap12:operation soapAction="http://tempuri.org/IProjectService/getProjectsByDepartmentName" style="document" />
+    <wsdl:operation name="getProjectsByDepartmentId">
+      <soap12:operation soapAction="http://tempuri.org/IProjectService/getProjectsByDepartmentId" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

@@ -90,15 +90,92 @@ namespace Client.projServiceRef {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EmployeeDTO", Namespace="http://schemas.datacontract.org/2004/07/EMS.Models")]
+    [System.SerializableAttribute()]
+    public partial class EmployeeDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int EmployeeIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int SalaryField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int EmployeeId {
+            get {
+                return this.EmployeeIdField;
+            }
+            set {
+                if ((this.EmployeeIdField.Equals(value) != true)) {
+                    this.EmployeeIdField = value;
+                    this.RaisePropertyChanged("EmployeeId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Salary {
+            get {
+                return this.SalaryField;
+            }
+            set {
+                if ((this.SalaryField.Equals(value) != true)) {
+                    this.SalaryField = value;
+                    this.RaisePropertyChanged("Salary");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="projServiceRef.IProjectService")]
     public interface IProjectService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectService/getProject", ReplyAction="http://tempuri.org/IProjectService/getProjectResponse")]
-        Client.projServiceRef.ProjectDTO getProject(string proj_title);
+        Client.projServiceRef.ProjectDTO getProject(int proj_id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectService/getProject", ReplyAction="http://tempuri.org/IProjectService/getProjectResponse")]
-        System.Threading.Tasks.Task<Client.projServiceRef.ProjectDTO> getProjectAsync(string proj_title);
+        System.Threading.Tasks.Task<Client.projServiceRef.ProjectDTO> getProjectAsync(int proj_id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectService/getProjects", ReplyAction="http://tempuri.org/IProjectService/getProjectsResponse")]
         Client.projServiceRef.ProjectDTO[] getProjects();
@@ -106,47 +183,47 @@ namespace Client.projServiceRef {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectService/getProjects", ReplyAction="http://tempuri.org/IProjectService/getProjectsResponse")]
         System.Threading.Tasks.Task<Client.projServiceRef.ProjectDTO[]> getProjectsAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectService/getProjectsByDepartmentName", ReplyAction="http://tempuri.org/IProjectService/getProjectsByDepartmentNameResponse")]
-        Client.projServiceRef.ProjectDTO[] getProjectsByDepartmentName(string dept_name);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectService/getProjectsByDepartmentId", ReplyAction="http://tempuri.org/IProjectService/getProjectsByDepartmentIdResponse")]
+        Client.projServiceRef.ProjectDTO[] getProjectsByDepartmentId(int dept_id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectService/getProjectsByDepartmentName", ReplyAction="http://tempuri.org/IProjectService/getProjectsByDepartmentNameResponse")]
-        System.Threading.Tasks.Task<Client.projServiceRef.ProjectDTO[]> getProjectsByDepartmentNameAsync(string dept_name);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectService/addProject", ReplyAction="http://tempuri.org/IProjectService/addProjectResponse")]
-        string addProject(Client.projServiceRef.ProjectDTO dto, string deptName);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectService/getProjectsByDepartmentId", ReplyAction="http://tempuri.org/IProjectService/getProjectsByDepartmentIdResponse")]
+        System.Threading.Tasks.Task<Client.projServiceRef.ProjectDTO[]> getProjectsByDepartmentIdAsync(int dept_id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectService/addProject", ReplyAction="http://tempuri.org/IProjectService/addProjectResponse")]
-        System.Threading.Tasks.Task<string> addProjectAsync(Client.projServiceRef.ProjectDTO dto, string deptName);
+        string addProject(Client.projServiceRef.ProjectDTO dto, int dept_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectService/addProject", ReplyAction="http://tempuri.org/IProjectService/addProjectResponse")]
+        System.Threading.Tasks.Task<string> addProjectAsync(Client.projServiceRef.ProjectDTO dto, int dept_id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectService/updateProject", ReplyAction="http://tempuri.org/IProjectService/updateProjectResponse")]
-        string updateProject(string proj_title, Client.projServiceRef.ProjectDTO p);
+        string updateProject(int proj_id, Client.projServiceRef.ProjectDTO p);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectService/updateProject", ReplyAction="http://tempuri.org/IProjectService/updateProjectResponse")]
-        System.Threading.Tasks.Task<string> updateProjectAsync(string proj_title, Client.projServiceRef.ProjectDTO p);
+        System.Threading.Tasks.Task<string> updateProjectAsync(int proj_id, Client.projServiceRef.ProjectDTO p);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectService/deleteProject", ReplyAction="http://tempuri.org/IProjectService/deleteProjectResponse")]
-        string deleteProject(string proj_title);
+        string deleteProject(int proj_id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectService/deleteProject", ReplyAction="http://tempuri.org/IProjectService/deleteProjectResponse")]
-        System.Threading.Tasks.Task<string> deleteProjectAsync(string proj_title);
+        System.Threading.Tasks.Task<string> deleteProjectAsync(int proj_id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectService/addEmployees", ReplyAction="http://tempuri.org/IProjectService/addEmployeesResponse")]
-        string addEmployees(string proj_title, string[] Emps);
+        string addEmployees(int proj_id, string[] Emps);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectService/addEmployees", ReplyAction="http://tempuri.org/IProjectService/addEmployeesResponse")]
-        System.Threading.Tasks.Task<string> addEmployeesAsync(string proj_title, string[] Emps);
+        System.Threading.Tasks.Task<string> addEmployeesAsync(int proj_id, string[] Emps);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectService/viewEmployees", ReplyAction="http://tempuri.org/IProjectService/viewEmployeesResponse")]
-        string[] viewEmployees(string proj_title);
+        Client.projServiceRef.EmployeeDTO[] viewEmployees(int proj_id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectService/viewEmployees", ReplyAction="http://tempuri.org/IProjectService/viewEmployeesResponse")]
-        System.Threading.Tasks.Task<string[]> viewEmployeesAsync(string proj_title);
+        System.Threading.Tasks.Task<Client.projServiceRef.EmployeeDTO[]> viewEmployeesAsync(int proj_id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectService/removeEmployeeFromProject", ReplyAction="http://tempuri.org/IProjectService/removeEmployeeFromProjectResponse")]
-        string removeEmployeeFromProject(string proj_title, string emp_name);
+        string removeEmployeeFromProject(int proj_id, int emp_id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProjectService/removeEmployeeFromProject", ReplyAction="http://tempuri.org/IProjectService/removeEmployeeFromProjectResponse")]
-        System.Threading.Tasks.Task<string> removeEmployeeFromProjectAsync(string proj_title, string emp_name);
+        System.Threading.Tasks.Task<string> removeEmployeeFromProjectAsync(int proj_id, int emp_id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -176,12 +253,12 @@ namespace Client.projServiceRef {
                 base(binding, remoteAddress) {
         }
         
-        public Client.projServiceRef.ProjectDTO getProject(string proj_title) {
-            return base.Channel.getProject(proj_title);
+        public Client.projServiceRef.ProjectDTO getProject(int proj_id) {
+            return base.Channel.getProject(proj_id);
         }
         
-        public System.Threading.Tasks.Task<Client.projServiceRef.ProjectDTO> getProjectAsync(string proj_title) {
-            return base.Channel.getProjectAsync(proj_title);
+        public System.Threading.Tasks.Task<Client.projServiceRef.ProjectDTO> getProjectAsync(int proj_id) {
+            return base.Channel.getProjectAsync(proj_id);
         }
         
         public Client.projServiceRef.ProjectDTO[] getProjects() {
@@ -192,60 +269,60 @@ namespace Client.projServiceRef {
             return base.Channel.getProjectsAsync();
         }
         
-        public Client.projServiceRef.ProjectDTO[] getProjectsByDepartmentName(string dept_name) {
-            return base.Channel.getProjectsByDepartmentName(dept_name);
+        public Client.projServiceRef.ProjectDTO[] getProjectsByDepartmentId(int dept_id) {
+            return base.Channel.getProjectsByDepartmentId(dept_id);
         }
         
-        public System.Threading.Tasks.Task<Client.projServiceRef.ProjectDTO[]> getProjectsByDepartmentNameAsync(string dept_name) {
-            return base.Channel.getProjectsByDepartmentNameAsync(dept_name);
+        public System.Threading.Tasks.Task<Client.projServiceRef.ProjectDTO[]> getProjectsByDepartmentIdAsync(int dept_id) {
+            return base.Channel.getProjectsByDepartmentIdAsync(dept_id);
         }
         
-        public string addProject(Client.projServiceRef.ProjectDTO dto, string deptName) {
-            return base.Channel.addProject(dto, deptName);
+        public string addProject(Client.projServiceRef.ProjectDTO dto, int dept_id) {
+            return base.Channel.addProject(dto, dept_id);
         }
         
-        public System.Threading.Tasks.Task<string> addProjectAsync(Client.projServiceRef.ProjectDTO dto, string deptName) {
-            return base.Channel.addProjectAsync(dto, deptName);
+        public System.Threading.Tasks.Task<string> addProjectAsync(Client.projServiceRef.ProjectDTO dto, int dept_id) {
+            return base.Channel.addProjectAsync(dto, dept_id);
         }
         
-        public string updateProject(string proj_title, Client.projServiceRef.ProjectDTO p) {
-            return base.Channel.updateProject(proj_title, p);
+        public string updateProject(int proj_id, Client.projServiceRef.ProjectDTO p) {
+            return base.Channel.updateProject(proj_id, p);
         }
         
-        public System.Threading.Tasks.Task<string> updateProjectAsync(string proj_title, Client.projServiceRef.ProjectDTO p) {
-            return base.Channel.updateProjectAsync(proj_title, p);
+        public System.Threading.Tasks.Task<string> updateProjectAsync(int proj_id, Client.projServiceRef.ProjectDTO p) {
+            return base.Channel.updateProjectAsync(proj_id, p);
         }
         
-        public string deleteProject(string proj_title) {
-            return base.Channel.deleteProject(proj_title);
+        public string deleteProject(int proj_id) {
+            return base.Channel.deleteProject(proj_id);
         }
         
-        public System.Threading.Tasks.Task<string> deleteProjectAsync(string proj_title) {
-            return base.Channel.deleteProjectAsync(proj_title);
+        public System.Threading.Tasks.Task<string> deleteProjectAsync(int proj_id) {
+            return base.Channel.deleteProjectAsync(proj_id);
         }
         
-        public string addEmployees(string proj_title, string[] Emps) {
-            return base.Channel.addEmployees(proj_title, Emps);
+        public string addEmployees(int proj_id, string[] Emps) {
+            return base.Channel.addEmployees(proj_id, Emps);
         }
         
-        public System.Threading.Tasks.Task<string> addEmployeesAsync(string proj_title, string[] Emps) {
-            return base.Channel.addEmployeesAsync(proj_title, Emps);
+        public System.Threading.Tasks.Task<string> addEmployeesAsync(int proj_id, string[] Emps) {
+            return base.Channel.addEmployeesAsync(proj_id, Emps);
         }
         
-        public string[] viewEmployees(string proj_title) {
-            return base.Channel.viewEmployees(proj_title);
+        public Client.projServiceRef.EmployeeDTO[] viewEmployees(int proj_id) {
+            return base.Channel.viewEmployees(proj_id);
         }
         
-        public System.Threading.Tasks.Task<string[]> viewEmployeesAsync(string proj_title) {
-            return base.Channel.viewEmployeesAsync(proj_title);
+        public System.Threading.Tasks.Task<Client.projServiceRef.EmployeeDTO[]> viewEmployeesAsync(int proj_id) {
+            return base.Channel.viewEmployeesAsync(proj_id);
         }
         
-        public string removeEmployeeFromProject(string proj_title, string emp_name) {
-            return base.Channel.removeEmployeeFromProject(proj_title, emp_name);
+        public string removeEmployeeFromProject(int proj_id, int emp_id) {
+            return base.Channel.removeEmployeeFromProject(proj_id, emp_id);
         }
         
-        public System.Threading.Tasks.Task<string> removeEmployeeFromProjectAsync(string proj_title, string emp_name) {
-            return base.Channel.removeEmployeeFromProjectAsync(proj_title, emp_name);
+        public System.Threading.Tasks.Task<string> removeEmployeeFromProjectAsync(int proj_id, int emp_id) {
+            return base.Channel.removeEmployeeFromProjectAsync(proj_id, emp_id);
         }
     }
 }

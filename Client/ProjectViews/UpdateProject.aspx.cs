@@ -14,12 +14,12 @@ namespace Client.ProjectViews
         {
             if (!IsPostBack)
             {
-                if (Request.QueryString["projTitle"] != null)
+                if (Request.QueryString["projId"] != null)
                 {
-                    string proj_title = Request.QueryString["projTitle"];
+                    string proj_id = Request.QueryString["projId"];
 
                     ProjectServiceClient pc = new ProjectServiceClient();
-                    ProjectDTO proj = pc.getProject(proj_title);
+                    ProjectDTO proj = pc.getProject(int.Parse(proj_id));
 
 
                     // Populate the textboxes with existing department details
@@ -31,8 +31,8 @@ namespace Client.ProjectViews
 
         protected void btnUpdateProj_Click(object sender, EventArgs e)
         {
-            string projTitle = Request.QueryString["projTitle"];
-            string deptName = Request.QueryString["deptName"];
+            string proj_id = Request.QueryString["projId"];
+            string dept_id = Request.QueryString["deptId"];
 
             string title = tbTitle.Text;
             string status = tbStatus.Text;
@@ -42,9 +42,9 @@ namespace Client.ProjectViews
             projDTO.Status = status;
 
             ProjectServiceClient pc = new ProjectServiceClient();
-            string s = pc.updateProject(title, projDTO);
+            string s = pc.updateProject(int.Parse(proj_id), projDTO);
 
-            Response.Redirect("/DepartmentViews/DepartmentProjects.aspx?deptName=" + Server.UrlEncode(deptName));  // needs to be changed...  --> dept_name as query string param
+            Response.Redirect("/DepartmentViews/DepartmentProjects.aspx?deptId=" + Server.UrlEncode(dept_id));
         }
     }
 }

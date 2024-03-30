@@ -20,7 +20,7 @@ namespace Client
         {
             string name = tbName.Text;
             int salary = int.Parse(tbSalary.Text);
-            string deptName = Request.QueryString["deptName"];
+            string dept_id = Request.QueryString["deptId"];
 
 
             EmployeeDTO empDTO = new EmployeeDTO();
@@ -29,7 +29,7 @@ namespace Client
 
 
             EmployeeServiceClient ec = new EmployeeServiceClient();
-            string s = ec.addEmployee(empDTO, deptName);
+            string s = ec.addEmployee(empDTO, int.Parse(dept_id));
 
             Label1.Text = s;
             Label1.ForeColor = System.Drawing.Color.Green;

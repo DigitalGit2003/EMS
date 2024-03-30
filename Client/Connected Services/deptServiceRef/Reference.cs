@@ -95,10 +95,10 @@ namespace Client.deptServiceRef {
     public interface IDepartmentService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDepartmentService/getDepartment", ReplyAction="http://tempuri.org/IDepartmentService/getDepartmentResponse")]
-        Client.deptServiceRef.DepartmentDTO getDepartment(string dept_name);
+        Client.deptServiceRef.DepartmentDTO getDepartment(int dept_id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDepartmentService/getDepartment", ReplyAction="http://tempuri.org/IDepartmentService/getDepartmentResponse")]
-        System.Threading.Tasks.Task<Client.deptServiceRef.DepartmentDTO> getDepartmentAsync(string dept_name);
+        System.Threading.Tasks.Task<Client.deptServiceRef.DepartmentDTO> getDepartmentAsync(int dept_id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDepartmentService/getDepartments", ReplyAction="http://tempuri.org/IDepartmentService/getDepartmentsResponse")]
         Client.deptServiceRef.DepartmentDTO[] getDepartments();
@@ -113,16 +113,16 @@ namespace Client.deptServiceRef {
         System.Threading.Tasks.Task<string> addDepartmentAsync(Client.deptServiceRef.DepartmentDTO d);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDepartmentService/updateDepartment", ReplyAction="http://tempuri.org/IDepartmentService/updateDepartmentResponse")]
-        string updateDepartment(string dept_name, Client.deptServiceRef.DepartmentDTO d);
+        string updateDepartment(int dept_id, Client.deptServiceRef.DepartmentDTO d);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDepartmentService/updateDepartment", ReplyAction="http://tempuri.org/IDepartmentService/updateDepartmentResponse")]
-        System.Threading.Tasks.Task<string> updateDepartmentAsync(string dept_name, Client.deptServiceRef.DepartmentDTO d);
+        System.Threading.Tasks.Task<string> updateDepartmentAsync(int dept_id, Client.deptServiceRef.DepartmentDTO d);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDepartmentService/deleteDepartment", ReplyAction="http://tempuri.org/IDepartmentService/deleteDepartmentResponse")]
-        string deleteDepartment(string dept_name);
+        string deleteDepartment(int dept_id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDepartmentService/deleteDepartment", ReplyAction="http://tempuri.org/IDepartmentService/deleteDepartmentResponse")]
-        System.Threading.Tasks.Task<string> deleteDepartmentAsync(string dept_name);
+        System.Threading.Tasks.Task<string> deleteDepartmentAsync(int dept_id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -152,12 +152,12 @@ namespace Client.deptServiceRef {
                 base(binding, remoteAddress) {
         }
         
-        public Client.deptServiceRef.DepartmentDTO getDepartment(string dept_name) {
-            return base.Channel.getDepartment(dept_name);
+        public Client.deptServiceRef.DepartmentDTO getDepartment(int dept_id) {
+            return base.Channel.getDepartment(dept_id);
         }
         
-        public System.Threading.Tasks.Task<Client.deptServiceRef.DepartmentDTO> getDepartmentAsync(string dept_name) {
-            return base.Channel.getDepartmentAsync(dept_name);
+        public System.Threading.Tasks.Task<Client.deptServiceRef.DepartmentDTO> getDepartmentAsync(int dept_id) {
+            return base.Channel.getDepartmentAsync(dept_id);
         }
         
         public Client.deptServiceRef.DepartmentDTO[] getDepartments() {
@@ -176,20 +176,20 @@ namespace Client.deptServiceRef {
             return base.Channel.addDepartmentAsync(d);
         }
         
-        public string updateDepartment(string dept_name, Client.deptServiceRef.DepartmentDTO d) {
-            return base.Channel.updateDepartment(dept_name, d);
+        public string updateDepartment(int dept_id, Client.deptServiceRef.DepartmentDTO d) {
+            return base.Channel.updateDepartment(dept_id, d);
         }
         
-        public System.Threading.Tasks.Task<string> updateDepartmentAsync(string dept_name, Client.deptServiceRef.DepartmentDTO d) {
-            return base.Channel.updateDepartmentAsync(dept_name, d);
+        public System.Threading.Tasks.Task<string> updateDepartmentAsync(int dept_id, Client.deptServiceRef.DepartmentDTO d) {
+            return base.Channel.updateDepartmentAsync(dept_id, d);
         }
         
-        public string deleteDepartment(string dept_name) {
-            return base.Channel.deleteDepartment(dept_name);
+        public string deleteDepartment(int dept_id) {
+            return base.Channel.deleteDepartment(dept_id);
         }
         
-        public System.Threading.Tasks.Task<string> deleteDepartmentAsync(string dept_name) {
-            return base.Channel.deleteDepartmentAsync(dept_name);
+        public System.Threading.Tasks.Task<string> deleteDepartmentAsync(int dept_id) {
+            return base.Channel.deleteDepartmentAsync(dept_id);
         }
     }
 }

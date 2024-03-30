@@ -20,14 +20,14 @@ namespace Client
         {
             string title = tbTitle.Text;
             string status = tbStatus.Text;
-            string deptName = Request.QueryString["deptName"];
+            string dept_id = Request.QueryString["deptId"];
 
             ProjectDTO projDTO = new ProjectDTO();
             projDTO.Title = title;
             projDTO.Status = status;
 
             ProjectServiceClient pc = new ProjectServiceClient();
-            string s = pc.addProject(projDTO, deptName);
+            string s = pc.addProject(projDTO, int.Parse(dept_id));
 
             Label1.Text = s;
             Label1.ForeColor = System.Drawing.Color.Green;
