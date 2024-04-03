@@ -1,4 +1,5 @@
-﻿using Client.empServiceRef;
+﻿using Client.deptServiceRef;
+using Client.empServiceRef;
 using Client.projServiceRef;
 using System;
 using System.Collections.Generic;
@@ -26,7 +27,9 @@ namespace Client.DepartmentViews
             if (Request.QueryString["deptId"] != null)
             {
                 string dept_id = Request.QueryString["deptId"];
-                lblDeptProjects.Text = "Projects of " + dept_id + " Department.";
+                DepartmentServiceClient dc = new DepartmentServiceClient();
+                DepartmentDTO d = dc.getDepartment(int.Parse(dept_id));
+                lblDeptProjects.Text = "Projects of " + d.Name + " Department.";
 
                 // get Projects by deptId
                 ProjectServiceClient pc = new ProjectServiceClient();
@@ -34,7 +37,7 @@ namespace Client.DepartmentViews
 
                 if (deptProjects.Count == 0)
                 {
-                    lblDeptProjects.Text = "No Projects are there in " + dept_id + " Department Currently.";
+                    lblDeptProjects.Text = "No Projects are there in " + d.Name + " Department Currently.";
                     return;
                 }
 
