@@ -24,14 +24,15 @@ namespace Client.ProjectViews
         private void PopulateGridView()
         {
             string proj_id = Request.QueryString["projId"];
-            lblViewEmployees.Text = "Employees for " + proj_id + " Project.";
-
             ProjectServiceClient pc = new ProjectServiceClient();
+            ProjectDTO p = pc.getProject(int.Parse(proj_id));
+            lblViewEmployees.Text = "Employees for " + p.Title + " Project.";
+
             List<EmployeeDTO> projEmployees = pc.viewEmployees(int.Parse(proj_id)).ToList();
 
             if (projEmployees.Count == 0)
             {
-                lblViewEmployees.Text = "Employees are working for " + proj_id + " Project Currently.";
+                lblViewEmployees.Text = "No Employees are working for " + p.Title + " Project Currently.";
                 return;
             }
 

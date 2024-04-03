@@ -27,7 +27,9 @@ namespace Client.DepartmentViews
             if (Request.QueryString["deptId"] != null)
             {
                 string dept_id = Request.QueryString["deptId"];
-                lblDeptEmployees.Text = "Employees of " + dept_id + " Department.";
+                DepartmentServiceClient dc = new DepartmentServiceClient();
+                DepartmentDTO d = dc.getDepartment(int.Parse(dept_id));
+                lblDeptEmployees.Text = "Employees of " + d.Name + " Department.";
 
                 // get Employees by deptId
                 EmployeeServiceClient ec = new EmployeeServiceClient();
@@ -35,7 +37,7 @@ namespace Client.DepartmentViews
 
                 if(deptEmployees.Count == 0)
                 {
-                    lblDeptEmployees.Text = "No Employees are there in " + dept_id + " Department Currently.";
+                    lblDeptEmployees.Text = "No Employees are there in " + d.Name + " Department Currently.";
                     return;
                 }
 

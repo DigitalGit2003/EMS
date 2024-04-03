@@ -20,7 +20,9 @@ namespace Client.ProjectViews
             {
                 string dept_id = Request.QueryString["deptId"];
                 string proj_id = Request.QueryString["projId"];
-                lblAddEmployees.Text = "Add Employees for " + proj_id + " Project.";
+                ProjectServiceClient temp_pc = new ProjectServiceClient();
+                ProjectDTO p = temp_pc.getProject(int.Parse(proj_id));
+                lblAddEmployees.Text = "Add Employees for " + p.Title + " Project.";
 
                 // get all employees of the department
                 EmployeeServiceClient ec = new EmployeeServiceClient();
