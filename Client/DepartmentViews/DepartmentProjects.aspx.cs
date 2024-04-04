@@ -79,7 +79,8 @@ namespace Client.DepartmentViews
             string s = pc.deleteProject(int.Parse(proj_id));
 
             PopulateGridView();
-            Label1.Text = proj_id + s;
+            ProjectDTO proj = pc.getProject(int.Parse(proj_id));
+            Label1.Text = proj.Title + " " + s;
             Label1.ForeColor = System.Drawing.Color.Red;
         }
 

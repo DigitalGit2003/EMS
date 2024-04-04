@@ -61,7 +61,8 @@ namespace Client
             string s = dc.deleteDepartment(int.Parse(dept_id));
 
             PopulateGridView();
-            Label1.Text = dept_id;
+            DepartmentDTO dept = dc.getDepartment(int.Parse(dept_id));
+            Label1.Text = dept.Name + " " + s;
             Label1.ForeColor = System.Drawing.Color.Red;
         }
 

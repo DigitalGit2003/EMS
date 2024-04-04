@@ -79,7 +79,8 @@ namespace Client.DepartmentViews
             string s = ec.deleteEmployee(int.Parse(emp_id));
 
             PopulateGridView();
-            Label1.Text = emp_id + s;
+            EmployeeDTO emp = ec.getEmployee(int.Parse(emp_id));
+            Label1.Text = emp.Name + " " + s;
             Label1.ForeColor = System.Drawing.Color.Red;
         }
 
